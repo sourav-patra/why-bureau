@@ -16,16 +16,18 @@ These rules cover budgets, switches of model roster, the arbiter, who writes whi
 
 - **Required** (repeats S3). Validate the real accounts, endpoints and providers that sit behind a roster.
 - **Required** (repeats S3 and S5). Switching rosters changes nothing about which destinations are eligible, which refusals are bound, or which run authorisations exist.
-- **Suggested.** A roster switch keeps post identity and role minimum grades.
+- **Required** (repeats charter section 6). A roster switch keeps every role's minimum grade.
+- **Suggested.** A roster switch also keeps post identity.
 - **Suggested.** The record of each roster switch holds its reason, its time and its revision.
 - **Suggested.** With no eligible model left, the work waits.
 
 ## The arbiter
 
-- **Suggested.** Once the planner is stuck and the person has gone 30 minutes without answering (or whatever other interval was adopted), an arbiter may decide engineering choices, staying inside the existing run authorisation. The arbiter must be authenticated, must have been named beforehand by someone authorised to do so, and must not be among the authors.
+- **Suggested.** Once the planner is stuck and the person has gone 30 minutes without answering (or whatever other interval was adopted), an arbiter may decide engineering choices, staying inside the existing run authorisation. The arbiter should be authenticated, should have been named beforehand by someone authorised to do so, and should not be among the authors.
 - **Suggested.** Silence gives the arbiter nothing.
-- **Required** (repeats charter sections 6 and 9). The arbiter cannot decide permissions, reserved acceptance, new effects or conflicts of authority; those remain blocked until the person decides.
-- **Required** (repeats S2 and charter section 7). Delegation to the arbiter never extends to signing, tagging, merging or changing locks.
+- **Required** (repeats charter sections 6 and 9). Dependent actions stop while a conflict of authority is unresolved or while they fall outside the existing run authorisation.
+- **Suggested.** The arbiter also leaves permissions, reserved acceptance, new effects and any clash over who holds authority for the person to settle.
+- **Suggested.** Delegation to the arbiter never extends to signing, tagging, merging or changing locks.
 - **Suggested.** Record the ruling, the clauses it applied, the delegation and the question that was put.
 
 ## Record kinds and who writes them
@@ -35,14 +37,15 @@ These rules cover budgets, switches of model roster, the arbiter, who writes whi
 
 | Record kind | Written by | Holds | Label |
 |---|---|---|---|
-| evidence | The authoritative facts come from protected services, verdicts from reviewers, and claims from workers. | Cited artifacts, reviews and run records. | **Required** (repeats charter section 7) |
-| code | Builder or fixer, but only inside the paths they declared. | The implementation itself, together with development tests. | **Required** (repeats charter section 9) |
+| evidence | The authoritative facts come from protected services, verdicts from reviewers, and claims from workers. | Cited artifacts, reviews and run records. | **Required** (repeats charter sections 4, 6 and 7 and tenet 12) |
+| code | Builder or fixer, but only inside the paths they declared. | The implementation itself, together with development tests. | **Required** (repeats charter sections 6 and 9) for existing run authority and writable-path limits; **Suggested** for assigning the writing to builders or fixers |
 | knowledge | A role that has been given this kind explicitly, and no other. | Documents that explain things or serve as reference. | **Suggested** |
 | design | The designer, within the assignment's run authorisation. | Decision records and designs. | **Suggested** |
-| purpose | Either the planner or the acceptance steward, by way of protected approval given before the run. | Every reserved acceptance check, the desired result, and the reason for it. | **Required** (repeats charter section 8) |
+| purpose | Either the planner or the acceptance steward, by way of protected approval given before the run. | Every reserved acceptance check, the desired result, and the reason for it. | **Required** (repeats charter sections 3 and 8) for protected approval; **Suggested** for who writes it and for giving approval before the run |
 
-- **Required** (repeats charter section 8). Purpose or reserved acceptance changes only with a newly locked revision and explicit approval.
-- **Required** (repeats charter section 8). Reserved acceptance can be changed by the acceptance steward alone, only ahead of the run, and only by approving and locking the change.
+- **Required** (repeats charter sections 3 and 8). Purpose or reserved acceptance changes only with a newly locked revision and explicit approval.
+- **Required** (repeats charter sections 3 and 8). Reserved acceptance changes only by approving and locking the change.
+- **Suggested.** Only the acceptance steward makes such a change, and only ahead of the run.
 - **Required** (repeats charter section 9). Development tests written as code are welcome from builders, but the reserved acceptance that grades their work is off limits to them.
 - **Suggested.** The assignment pins the whole reserved acceptance set by digest.
 - **Suggested.** Within one assignment, a single role may not write both a piece of code and the purpose that judges it.

@@ -30,29 +30,32 @@ In alphabetical order:
 - Role. A job, described by the minimum grade it needs, the write scope it may use, the permissions it asks for and what it is for.
 - Run record. The permanent account of a run, binding authenticated host observations and worker claims, kept apart, to the artifacts involved.
 
-- Accountability belongs to the post. The model roster just records which model is filling each grade right now.
-- A roster switch changes nothing about a post's memory boundaries, its obligations or its identity.
+- **Suggested.** Accountability belongs to the post. The model roster just records which model is filling each grade right now.
+- **Suggested.** A roster switch changes nothing about a post's memory boundaries, its obligations or its identity.
 - **Suggested.** Use the nine elements the same way everywhere.
 
 How they connect:
 
-- The meaning of done is fixed by the purpose before work starts.
-- The authenticated run authorisation is the source of authority, and what a role asks for is measured against it.
-- The protected host observes the evidence, model rosters pick the models, and grades set the minimum capability.
-- Outcomes, revisions and identities are derived by the host; workers only make requests.
+- **Suggested.** The meaning of done is fixed by the purpose before work starts.
+- **Required** (repeats charter sections 1 and 6). The authenticated run authorisation is the source of authority, and what a role asks for is measured against it.
+- **Suggested.** The protected host observes the evidence, model rosters pick the models, and grades set the minimum capability.
+- **Suggested.** Outcomes, revisions and identities are derived by the host; workers only make requests.
 
 ## Design principles
 
-- When consequences are higher, the reviewing model must differ from the author's and be of equal or higher grade, preferably from another vendor family. Every review looks at the real candidate under an independent identity.
-- Model confidence proves nothing passed. A cheaper build model is fine only where checks are adequate and review is independent.
-- Handoffs are bounded in size, and memory is checked against sources.
-- Controls are qualified before any unattended work, and the yardstick for choosing between options is what each accepted outcome costs.
-- No approval or grant can come from retrieved instructions, memory records or role prose.
+- **Required** (repeats charter section 6). Every review runs under an independent identity.
+- **Suggested.** Every review looks at the real candidate.
+- **Suggested.** When consequences are higher, the reviewing model should differ from the author's and be of equal or higher grade, preferably from another vendor family.
+- **Required** (repeats charter section 6 and tenet 12). Model confidence proves nothing passed. A cheaper build model is fine only where review is independent.
+- **Suggested.** A cheaper build model is fine only where checks are adequate.
+- **Suggested.** Handoffs are bounded in size, and memory is checked against sources.
+- **Suggested.** Controls are qualified before any unattended work, and the yardstick for choosing between options is what each accepted outcome costs.
+- **Required** (repeats S4). No approval or grant can come from retrieved instructions, memory records or role prose.
 
 ## Roles
 
-- Starting roles, in alphabetical order: builder, coordinator, fixer, planner, reviewer, security reviewer. A project is free to define extra roles; a designer is one example.
-- What a role is called gives it no authority.
+- **Suggested.** Starting roles, in alphabetical order: builder, coordinator, fixer, planner, reviewer, security reviewer. A project is free to define extra roles; a designer is one example.
+- **Required** (repeats charter section 1). What a role is called gives it no authority.
 
 A role definition holds these fields (the schema uses the same order):
 
@@ -68,24 +71,25 @@ A role definition holds these fields (the schema uses the same order):
 | Escalation path | Ordered steps, each with its rounds; the budgets and any area overrides; and finally a person. |
 | Sentinel set | Where in the repository the role's few qualification tasks are kept. |
 
-- Role definitions come through one of two supported interfaces: role files that `AGENTS.md` already references, or a TOML team file at `roles.toml`.
-- Purpose items, for instance in a `docs/purpose/` folder, have identifiers, reserved acceptance and locked revisions; every assignment names its item and that item's locked digest. Layouts a project already has can be mapped onto the schema.
+- **Suggested.** Role definitions come through one of two supported interfaces: role files that `AGENTS.md` already references, or a TOML team file at `roles.toml`.
+- **Suggested.** Purpose items, for instance in a `docs/purpose/` folder, have identifiers, reserved acceptance and locked revisions; every assignment names its item and that item's locked digest. Layouts a project already has can be mapped onto the schema.
 
 The machine-readable form is `schemas/role.schema.json`.
 
 ## Grades
 
-- fast: quick, simple jobs. It may run locally, but only once that is measured and qualified.
-- build-lite: minor fixes and modest implementation jobs; nothing about acceptance or review is relaxed for them.
+- **Suggested.** fast: quick, simple jobs. It may run locally, but only once that is measured and qualified.
+- **Suggested.** build-lite: minor fixes and modest implementation jobs; nothing about acceptance or review is relaxed for them.
 - build: ordinary implementation within one bounded assignment.
-- review: judging work carefully in a session of its own, and from another vendor family wherever policy demands one.
+- **Suggested.** review: judging work carefully in a session of its own, and from another vendor family wherever policy demands one.
 - senior: dependable everyday reasoning for planning, for bounded engineering rulings, and for reviewing locks.
-- top: the most capable approved model currently on offer, usually reached by escalating. A person must decide explicitly before it becomes any role's minimum grade.
+- **Suggested.** top: the most capable approved model currently on offer, usually reached by escalating. A person should decide explicitly before it becomes any role's minimum grade.
 
-- More complex tasks may push a role's minimum grade up, but never down.
-- Rules speak only of grades. Concrete models appear in private model rosters and in factual run records, nowhere else.
-- Placeholder examples may show a roster with local models, with several providers, or with only one provider.
-- If the roster has only one provider, any review that must come from another vendor family goes to a person instead, or else waits.
+- **Required** (repeats S5 and charter sections 1 and 6). More complex tasks never push a role's minimum grade down.
+- **Suggested.** More complex tasks may push a role's minimum grade up.
+- **Suggested.** Rules speak only of grades. Concrete models appear in private model rosters and in factual run records, nowhere else.
+- **Suggested.** Placeholder examples may show a roster with local models, with several providers, or with only one provider.
+- **Suggested.** If the roster has only one provider, any review that must come from another vendor family goes to a person instead, or else waits.
 
 ## The seven layers
 
@@ -101,26 +105,28 @@ The machine-readable form is `schemas/role.schema.json`.
 
 Across layers:
 
-- Model rosters need default mappings, and they report overrides that have gone stale.
-- Usage figures are advice only, until both the collection of usage and the settling of reservations have passed checks on the real path.
-- Several projects may share posts for observation, retrieval, memory and dispatch; owning such a post grants no access to content.
-- Every project, and within it every trust zone, gets its own separate records, caches, in-trays, indexes and memory.
-- No session reads data unless its role and its provider eligibility allow it; data crosses from one trust zone to another only through an export someone explicitly approved.
-- Project posts stay separate for each project and each role.
-- With more and more projects, the load of coordinating them is counted as the human interventions each accepted outcome needed.
+- **Suggested.** Model rosters need default mappings, and they report overrides that have gone stale.
+- **Suggested.** Usage figures are advice only, until both the collection of usage and the settling of reservations have passed checks on the real path.
+- **Suggested.** Several projects may share posts for observation, retrieval, memory and dispatch; owning such a post grants no access to content.
+- **Suggested.** Every project, and within it every trust zone, gets its own separate records, caches, in-trays, indexes and memory.
+- **Required** (repeats S3). No session reads data unless its provider eligibility allows it.
+- **Suggested.** No session reads data unless its role allows it; data crosses from one trust zone to another only through an export someone explicitly approved.
+- **Suggested.** Project posts stay separate for each project and each role.
+- **Suggested.** With more and more projects, the load of coordinating them is counted as the human interventions each accepted outcome needed.
 
 ## Failure states
 
 | State | What happened | What comes next | Label |
 |---|---|---|---|
-| unknown | The host has no way to establish how it ended. | Anything that depends on it waits until the operation, and every effect it had, have been reconciled. | **Required** (repeats charter section 8) |
+| unknown | The host has no way to establish how it ended. | Anything that depends on it waits until the operation, and every effect it had, have been reconciled. | **Required** (repeats charter sections 5 and 8) |
 | wait | Quota, dispatch or budget controls are holding the assignment. | Wait, or take an alternative that is explicitly permitted; never lower the minimum grade to get past the hold. | **Required** (repeats charter sections 6 and 8) |
 | refusal | A policy or a model refused. | Apply the adopted refusal policy; switching the task to another model happens only where written policy plainly permits it. | **Required** (repeats S5) |
-| timeout | The run reached its time cap and was stopped. | Bring every descendant process and every outside effect into line with the record before anything else; after that, handle the run as an engineering failure. | **Required** (repeats charter section 8) |
+| timeout | The run reached its time cap and was stopped. | Bring every descendant process and every outside effect into line with the record before anything else; after that, handle the run as an engineering failure. | **Required** (repeats charter section 8) for settling any unknown outside effect before a state-changing retry; **Suggested** for settling descendant processes first and for treating the run as an engineering failure afterwards |
 | cancellation | Someone stopped the work. | No retry happens until someone gives a fresh instruction. | **Suggested** |
 | engineering failure | The host saw the run end with failing checks. | Try again, following the approved escalation path step by step. | **Suggested** |
 
-- **Required** (repeats charter section 8). Nobody may rename an unknown, cancellation, wait or refusal as some other state in order to get a different model; each of the four stays what it is.
+- **Required** (repeats charter section 8). A host refusal or a quota hold is never got round, whatever the state is called.
+- **Suggested.** Nobody should rename an unknown, cancellation, wait or refusal as some other state in order to get a different model; each of the four stays what it is.
 
 ## The escalation path
 
@@ -141,14 +147,17 @@ How a path is described:
 | last | A person | no count set; the path ends here |
 
 - **Suggested.** An area override replaces the path for work matching a label or a path. By default there are none. A security area is the one suggested exception: it may climb from senior directly to the person, leaving out top.
-- **Required** (repeats charter section 8). A budget ceiling is reserved ahead of each round, within the assignment's budget and its reserved verification allowance.
+- **Required** (repeats charter sections 6 and 8). Every round stays within the assignment's approved total budget, and implementation spending never draws on the reserved verification allowance.
+- **Suggested.** A budget ceiling is reserved ahead of each round.
 - **Suggested.** Above a step that failed, a vendor preference may lean toward a provider of another family, though never outside the destinations cleared for that data class or the refusal bindings already in place; that destination limit is **Required** (repeats S3).
 
 What always holds:
 
 - **Suggested.** A person is always the final step. A grade with no mapping is skipped and the reason recorded, while destination limits, independence and minimum grades stay in force.
-- **Suggested.** A question about priority, scope, permissions, credentials or a lock does not climb the model steps at all; it goes straight to a person, since authority that is absent cannot come from any model.
-- **Required** (repeats S5). The senior and top rounds diagnose and cut the job down to size, after which building returns to the grade the role normally uses; a more capable model gets no extra builder permissions.
+- **Suggested.** A question about priority, scope, permissions, credentials or a lock does not climb the model steps at all; it goes straight to a person.
+- **Required** (repeats S5 and charter section 6). Authority that is absent cannot come from any model.
+- **Suggested.** The senior and top rounds diagnose and cut the job down to size, after which building returns to the grade the role normally uses.
+- **Required** (repeats S5). A more capable model gets no extra builder permissions.
 - **Suggested.** A round opens with four things: the evidence against the last attempt, the purpose item, the history of attempts, and a diagnosis that has changed. Every step further up starts from a clean context but keeps the assignment's existing run authorisation, and that this authorisation does not change is **Required** (repeats S5).
 - **Suggested.** When the path reaches the person, an arbiter that was authorised beforehand may stand in, but only inside its limits.
 - **Suggested.** When a fix round fails, file an issue; switch to some other assignment only if its required dependencies are still verified.
@@ -160,25 +169,25 @@ The machine-readable form is `schemas/escalation-path.schema.json`.
 
 ## Posts, handoffs and sessions
 
-- A post declares how it hands off, what it may write, what it may read, and its purpose.
-- A handoff never contains transcripts. It carries the acceptance evidence, pointers to sources, the item id and the item's state.
-- During a session an agent backs what it claims with first-hand evidence, keeps within its role, leaves trust labels intact, and halts at a refusal.
-- At the close of a session, the agent states what was run and what is still not known.
+- **Suggested.** A post declares how it hands off, what it may write, what it may read, and its purpose.
+- **Suggested.** A handoff never contains transcripts. It carries the acceptance evidence, pointers to sources, the item id and the item's state.
+- **Suggested.** During a session an agent backs what it claims with first-hand evidence, keeps within its role, leaves trust labels intact, and halts at a refusal.
+- **Suggested.** At the close of a session, the agent states what was run and what is still not known.
 
 ## Run sequence
 
 A run moves through three phases, always in the same sequence.
 
-- Preparation. The runtime first writes down the purpose being served. Code then claims the work item, sends it where the declared routing table says, and makes sure the budget can cover it.
-- Work. Code opens a post inside the one sandbox that post is permitted. The post loads its memory, does everything through tool boundaries that are checked, and wraps its output in an envelope.
-- Hand-back. The parent folds that output in only after the run records it depends on are in its hands.
+- **Suggested.** Preparation. The runtime first writes down the purpose being served. Code then claims the work item, sends it where the declared routing table says, and makes sure the budget can cover it.
+- **Suggested.** Work. Code opens a post inside the one sandbox that post is permitted. The post loads its memory, does everything through tool boundaries that are checked, and wraps its output in an envelope.
+- **Required** (repeats charter section 4). Hand-back. The parent folds that output in only after the run records it depends on are in its hands.
 
 ## Messages between agents
 
-- A message envelope is versioned and carries a hash of the content, a trust label and the source.
-- Grants are never carried inside message envelopes; they use a separate channel that the host authenticates.
-- A durable outbox commits each state change together with its outgoing events, so one never happens without the other.
-- Passing through the gateway (the policy enforcement point) means four checks: on the effect, on the scope, on the session, and on who is calling.
+- **Suggested.** A message envelope is versioned and carries a hash of the content, a trust label and the source.
+- **Required** (repeats S4 and tenet 3). Grants are never carried inside message envelopes; they use a separate channel that the host authenticates.
+- **Suggested.** A durable outbox commits each state change together with its outgoing events, so one never happens without the other.
+- **Suggested.** Passing through the gateway (the policy enforcement point) means four checks: on the effect, on the scope, on the session, and on who is calling.
 
 Sources: REFERENCES.md entries 94 and 102.
 
@@ -192,23 +201,26 @@ Seven memory types are kept apart. They fall into three groups:
 
 Writing memory:
 
-- Memory is written by deterministic code alone. Taking in new material, sorting it, tying it to its source and putting together the briefing are all done without asking a model.
-- A recall note quotes its source, and the quote is confirmed to exist in that source twice over: once before the note is saved, and again on every later read.
+- **Suggested.** Memory is written by deterministic code alone. Taking in new material, sorting it, tying it to its source and putting together the briefing are all done without asking a model.
+- **Suggested.** A recall note quotes its source, and the quote is confirmed to exist in that source twice over: once before the note is saved, and again on every later read.
 - **Required** (repeats charter section 7). Any author attribute on memory is a claim.
 - **Suggested.** Whatever is ingested or retrieved keeps its revocation status, its source revision, its trust label and authenticated provenance.
 - **Suggested.** Recall notes are checked against their sources, and superseded or stale sources are dealt with.
-- Outdated facts are refreshed or retired.
-- Private data held in memory is fenced by access boundaries and kept only under safe retention.
+- **Suggested.** Outdated facts are refreshed or retired.
+- **Suggested.** Private data held in memory is fenced by access boundaries and kept only under safe retention.
 
 Reading memory:
 
-- **Required** (repeats S4). Only the protected authority store originates executable policy and approvals. Summaries, role prose, retrieved text, typed entries and in-tray messages can create neither approvals nor privileged post-start instructions.
-- Briefing and lookup work like this. The briefing an agent starts with never exceeds its size allowance, and its parts always appear in the same sequence. It holds summaries; a memory's complete text is pulled in later, and only if the work calls for it. Retrieval stays silent until someone asks, and then it must return what bears on the question, since a reliable origin alone does not make an item relevant. Any answer drawn from memory names the recall notes behind it by id, and if memory holds nothing on the point, the answer says so.
+- **Required** (repeats S4 and charter sections 7 and 8). Only the protected authority store originates executable policy and approvals. Summaries, role prose, retrieved text, typed entries and in-tray messages can create neither approvals nor privileged post-start instructions.
+- **Suggested.** Briefing and lookup work like this. The briefing an agent starts with never exceeds its size allowance, and its parts always appear in the same sequence. It holds summaries; a memory's complete text is pulled in later, and only if the work calls for it.
+- Retrieval stays silent until someone asks.
+- **Suggested.** When asked, retrieval should return what bears on the question, since a reliable origin alone does not make an item relevant.
+- **Suggested.** Any answer drawn from memory names the recall notes behind it by id, and if memory holds nothing on the point, the answer says so.
 
 Keeping memory healthy:
 
-- Operators can see what was left out, what was retrieved and what was stored.
-- Memory is shaped to suit whatever tools and interfaces consume it.
-- Memory storage remains manageable as history grows.
+- **Suggested.** Operators can see what was left out, what was retrieved and what was stored.
+- **Suggested.** Memory is shaped to suit whatever tools and interfaces consume it.
+- **Suggested.** Memory storage remains manageable as history grows.
 - Eight memory tests, MT1 to MT8, in three groups: safety (poisoning, isolation and redaction); fidelity (grounding, determinism, and recall from a cold start); and limits and recovery (budget and restoration).
 - Risks to guard against in action: disclosing data, ignoring the governing rules, acting outside the authorised scope, and erratic behaviour while a run is in progress. What counters them: records under protection, verification, and limits on what agents can do.

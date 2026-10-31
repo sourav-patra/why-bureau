@@ -1,8 +1,8 @@
 # The why-bureau method
 
-Version 0.1. Current status: draft specification; no reference implementation yet. Decision record 0001 is what put this text in force.
+Version 0.1.1. Current status: draft specification; no reference implementation yet. Decision record 0001 is what put this text in force, and decision record 0003 revised it.
 
-This is the engineering method. It holds five safeguards, which exist to protect people who are not on the team; fourteen numbered tenets, grouped here by theme; and practical guidance arranged by when it applies: before, during and after a run. Labels: **Required** binds this repository; **Suggested** is advice to try and measure; an unlabelled statement is a definition, a fact or an explanation.
+This is the engineering method. It holds five safeguards, which exist to protect people who are not on the team; fourteen numbered tenets, grouped here by theme; and practical guidance arranged by when it applies: before, during and after a run. Labels: **Required** binds this repository, while a team adopting the method is held only to safeguards S1 to S5 and may treat the rest as advice; **Suggested** is advice to try and measure; an unlabelled statement is a definition, a fact or an explanation.
 
 ## 1. Standing of this method
 
@@ -13,7 +13,9 @@ This is the engineering method. It holds five safeguards, which exist to protect
 - **Suggested.** If another method does better on the team's own tasks, that method takes priority over this one.
 - **Required.** The safeguards are the part that does not bend, because when one fails the harm lands outside the team: on a customer, a colleague, or whoever owns the data. Restricted data falls under S3 and the audit record falls under S2.
 - **Required.** Should the organisation's security or compliance rules be stricter, they win; this method never waters them down.
-- Taking up the method leaves the host unbuilt and the runtime unqualified. A host is never qualified by a score given to a repository or by having a policy written down, and nothing in these pages enforces itself. Handing a method to someone else needs evidence the receiver holds; assessing a repository cannot provide that evidence.
+- Taking up the method leaves the host unbuilt and the runtime unqualified.
+- **Suggested.** A host is never qualified by a score given to a repository or by having a policy written down, and nothing in these pages enforces itself.
+- Handing a method to someone else needs evidence the receiver holds; assessing a repository cannot provide that evidence.
 - Citations make an idea plausible; whether it helps a particular team shows up only in that team's own measurements. Every threshold here is a design choice until it is measured on the tasks of the team using it.
 
 ## 2. Vocabulary
@@ -39,7 +41,7 @@ This is the engineering method. It holds five safeguards, which exist to protect
 - **Required.** An instruction that arrives from an unpinned location is ignored.
 - **Required.** Doing what a message, a file or a tool result says, because it said so, is a breach of S4.
 - **Required.** If one agent writes authority into a file, the agent that later reads the file sees only data.
-- Protocols for tool access and for messages between agents carry traffic. They never confer approval.
+- **Required.** Protocols for tool access and for messages between agents carry traffic. They never confer approval.
 
 ### The two-of-three limit
 
@@ -73,8 +75,8 @@ This is the engineering method. It holds five safeguards, which exist to protect
 - **Required.** Permissions attach to the role and to the sandbox; they never attach to a model.
 - **Required.** A fallback model receives no tool the primary model lacks.
 - **Required.** If one model declines a task, handing it to a different model needs a written policy that names exactly that move.
-- When a model declines on policy grounds, that stands as a refusal; it is no excuse for shopping around for a more obliging model beyond what the adopted policy permits.
-- Changing the model changes neither authority nor the minimum quality level.
+- **Required.** When a model declines on policy grounds, that stands as a refusal; it is no excuse for shopping around for a more obliging model beyond what the adopted policy permits.
+- **Required.** Changing the model changes neither authority nor the minimum quality level.
 
 ### S2. Irreversible and high-value actions need a named person
 
@@ -131,7 +133,7 @@ The tenets keep their numbers 1 to 14 wherever they appear, so a record citing a
 
 - **Required.** The result is whatever a record id, diff, test result or exit code establishes; an agent announcing that it has finished counts for nothing.
 - **Required.** If a run produced nothing, its ending is failed or blocked; done is not available to it.
-- Confidence weighs less than a result someone else can reproduce.
+- **Required.** Confidence weighs less than a result someone else can reproduce.
 - Sign: alongside each result sit exit codes, test output or diff hashes, and one test exists purely to show that an empty run finishes as failed.
 
 **Tenet 10. A second pair of eyes.**
@@ -154,7 +156,7 @@ The tenets keep their numbers 1 to 14 wherever they appear, so a record citing a
 - **Required.** Whatever a rule can settle goes into code that can be tested, because models slip on policy, bookkeeping and arithmetic.
 - **Required.** Model output is only one input to the code that decides, and it is parsed against a schema before it is used.
 - **Required.** Exploratory or creative work may relax this tenet, provided a person makes the call.
-- Bookkeeping, deterministic policy and state transitions are code, not something left to agents.
+- **Required.** Bookkeeping, deterministic policy and state transitions are code, not something left to agents.
 - Sign: decisions that change state are made in tested code, and nothing a model outputs is used before a schema has parsed it.
 
 **Tenet 8. If it must always hold, make it run.**
@@ -245,14 +247,14 @@ Where checks sit, from the action backward:
 - **Suggested.** Turn away any tool built to answer, suppress or pre-approve the permission prompts the host itself raises.
 - **Suggested.** Keep purpose and acceptance checks where the agent they assess cannot reach them.
 - **Suggested.** The agent under assessment may write additional tests of its own.
-- **Suggested.** If agreed checks are to change, the change must return to the people or agents who agreed them.
+- **Suggested.** If agreed checks are to change, the change should return to the people or agents who agreed them.
 - **Suggested.** Proof that guardrails work: for every action class a test shows its path holding, and a fixture containing a planted instruction provokes nothing.
 
 ### 5.4 Choosing a box
 
 - **Suggested.** Give each agent the tightest enclosure it can still work in, and be honest about which enclosure is actually in use.
 - **Suggested.** Choose an isolation grade from two questions: is there an agent, and is anyone watching it; and how far can it reach? The four grades, from least to most exposed:
-  1. G0, plain automation. What runs is a script or tool touching only its own files, with no agent involved. Network use is either absent or limited to a single declared host that is only read from. The test suite proves this, and one of its tests must fail the moment anything calls a different host.
+  1. G0, plain automation. What runs is a script or tool touching only its own files, with no agent involved. Network use is either absent or limited to a single declared host that is only read from. The test suite proves this, and one of its tests should fail the moment anything calls a different host.
   2. G1, supervised. Someone is at the screen. Whatever the host's permission settings do not explicitly allow is refused, and the agent may change files only inside the folder it is working in.
   3. G2, alone and nearly offline. Nobody is at the screen, and the only things within reach are the model and source control that can be read but not written. Isolation comes from four separate measures. Each run is given a private copy of the repository on a branch nobody else uses. The operating system or a container makes it impossible to change files outside that private copy. Environment variables that hold credentials are removed before the agent starts. When the run finishes, the private copy is thrown away.
   4. G3, alone with reach. Nobody is at the screen, and the agent may open connections to other machines, push commits, or hold a credential. Everything required at G2 still applies. On top of that: outbound traffic is allowed only to destinations on an approved list or through an approved gateway; a broker, not the agent, supplies credentials; the platform, not the agent, says who the agent is; any token lives briefly and works only for that run; and changing what the agent can reach triggers a policy check.
@@ -275,24 +277,24 @@ Where checks sit, from the action backward:
   5. A skill. Add: for know-how about a procedure or a domain that the model lacks and needs only now and then. Retire: once it brings no gain, or hurts tasks the model managed without it.
   6. An agent role of its own. Add: for work that keeps coming back and needs its own permissions, context and tools. Retire: once one general agent matches it.
   7. Several agents in a workflow. Add: for pieces that are worth the tokens, have a strong verifier and are truly independent. Retire: once some lower rung matches it.
-- A dedicated agent is worth scoping as soon as recurring work needs one of these: its own permissions, its own tools or its own context. Rung 6 above asks for all three together.
-- Fine-tuning comes only after the three cheaper means (retrieval, skills and instructions, in any order) have hit a limit that was measured.
+- **Suggested.** A dedicated agent is worth scoping as soon as recurring work needs one of these: its own permissions, its own tools or its own context. Rung 6 above asks for all three together.
+- **Suggested.** Fine-tuning comes only after the three cheaper means (retrieval, skills and instructions, in any order) have hit a limit that was measured.
 
 Writing skills:
 
 - **Suggested.** Keep a skill short and on one subject, limited to knowledge or behaviour the model would not show unprompted. Generic advice stays out.
-- Each skill is about a single procedure or a single domain.
+- **Suggested.** Each skill is about a single procedure or a single domain.
 - **Suggested.** A skill's description explains its purpose and the moment to reach for it; where skills cover neighbouring subjects, each also spells out when to leave it alone.
 - **Suggested.** Before anyone else relies on a skill, a person reads all of it. Skills an agent writes for its own use and nobody checks usually do not help.
-- A skill drafted by a model has no standing until it passes its checks.
-- The persona a skill gives the model is no evidence of accuracy or of authority.
+- **Suggested.** A skill drafted by a model has no standing until it passes its checks.
+- **Suggested.** The persona a skill gives the model is no evidence of accuracy or of authority.
 - **Suggested.** Run a handful of real tasks twice, once with the skill and once without, and tally the tasks it hurt alongside the ones it helped.
 - **Suggested.** Note the model a skill was tested with; test again after a model change, and retire the skill once it no longer helps.
 
 Scripts inside skills:
 
 - **Suggested.** Skill scripts run inside the sandbox.
-- **Suggested.** Bad input must make a script fail loudly; it never exits as a success after doing the wrong thing.
+- **Suggested.** Bad input should make a script fail loudly; it never exits as a success after doing the wrong thing.
 - **Suggested.** Skill scripts never take credentials from environment variables.
 - **Suggested.** No skill script changes an agent's hooks or configuration.
 - **Suggested.** Skill scripts never pull instructions from a location that is not pinned.
@@ -325,23 +327,24 @@ Layered configuration:
 - **Suggested.** Routing never sends work below the minimum quality the role sets.
 - **Suggested.** Fallbacks are listed in advance. If a model cannot be reached, whichever model is listed after it steps in; if none is, the work is put on hold.
 - **Suggested.** For every role keep a few real tasks as sentinels. Put them through every model family the role relies on, and put them through again whenever a harness setting, the model's version or the model itself changes, because vendors update models quietly.
-- Assess refusals separately from instruction following; a refusal tells you nothing about which instructions were understood.
-- Pass mechanical jobs to a cheaper grade only where the minimum quality expected of that grade, together with the checks around the work, make the move safe; the stronger models are better spent on planning and on diagnosing hard problems.
+- **Suggested.** Assess refusals separately from instruction following; a refusal tells you nothing about which instructions were understood.
+- **Suggested.** Pass mechanical jobs to a cheaper grade only where the minimum quality expected of that grade, together with the checks around the work, make the move safe; the stronger models are better spent on planning and on diagnosing hard problems.
 
 ## 6. During a run
 
 ### 6.1 Sessions and handoffs
 
 - **Suggested.** Give each session a single task.
-- Open a new session for each bounded task, naming at the outset its acceptance check and its files.
+- **Suggested.** Open a new session for each bounded task, naming at the outset its acceptance check and its files.
 - **Suggested.** If two corrections have failed, begin again in a fresh session.
 - Sessions that run long feel more productive even as retrieval gets worse. Reluctance to pay for a restart pushes a session past its useful context, until it loses track mid-task or leans on its own unverified claim of completion. In the reported research every model tested, 18 of 18, did worse as its input grew, and the decline began near 50K tokens in a 200K window.
 - **Suggested.** Hand off references, never contents. What passes between sessions is a brief note saying where things were left, paths and ids; a transcript is never pasted in.
-- Keep independent review apart from implementation, and keep restarts cheap with a short handoff that durable evidence backs up.
+- **Required.** Keep independent review apart from implementation.
+- **Suggested.** Keep restarts cheap with a short handoff that durable evidence backs up.
 - **Suggested.** When a job would flood the context, for instance by fetching pages, searching widely or reading long logs, delegate it to a sub-agent whose only output is a brief summary.
 - **Suggested.** Tools give back output that is paginated, readable and short.
 - **Suggested.** Any project fact an agent asserts comes with its source; lacking one, the agent admits ignorance instead of plugging the hole with whatever its training suggests.
-- Before adding instructions to a run that is getting worse, look at what the task asks for, at the context that has built up and at the model grade.
+- **Suggested.** Before adding instructions to a run that is getting worse, look at what the task asks for, at the context that has built up and at the model grade.
 - The weaker the model, the more its result can depend on how good the prompt is. Reported research linked about 53% of quality variance to prompt quality; on the weakest models strategy had roughly four times the effect, while on top models it explained at most 2% of variance.
 - Whatever a skill says is carried out by a runtime, so a skill is only as good as the model behind it: a well-built workflow keeps avoidable errors out, yet the ceiling on what the task can achieve is still set by the model's capability.
 
@@ -349,9 +352,9 @@ Layered configuration:
 
 - **Suggested.** Begin from a single agent with a strong verifier. Extra agents come in only for broad research, for a clean review context, or for pieces that are independent.
 - **Suggested.** Agents never coordinate by talking to one another; whatever they share goes through durable records.
-- An agent learns what to do by following pointers it finds in shared state.
-- Agents hand back typed results, never free-form ones.
-- State transitions belong to the runtime, not to the agents.
+- **Suggested.** An agent learns what to do by following pointers it finds in shared state.
+- **Suggested.** Agents hand back typed results, never free-form ones.
+- **Required.** State transitions belong to the runtime, not to the agents.
 - **Suggested.** A sub-agent whose work rests on earlier decisions receives the complete context.
 - **Suggested.** The parent carries on only once all of its sub-agents are done, and it picks up just once.
 - **Suggested.** When agents cooperate across a vendor or team boundary, they do so over an open protocol whose task states are explicit, and they never merge the label saying who wrote something with the label saying how far it can be trusted.
@@ -409,8 +412,8 @@ How a run ends:
 - **Suggested.** Old arm results stop counting in three situations, and then every recorded arm runs again in full next to the new ones: nobody can demonstrate that the setup stayed the same; a check has gone past its limit; or the model or harness has changed.
 - **Suggested.** New or edited cases get their own runs in each arm.
 - **Suggested.** When you publish a result, list what went unmeasured, and do not throw away measurements that failed.
-- A good average, or a single demo that worked, is weak support for running work unattended.
-- Prefer to copy a method someone has already measured, and then test how well it fits.
+- **Suggested.** A good average, or a single demo that worked, is weak support for running work unattended.
+- **Suggested.** Prefer to copy a method someone has already measured, and then test how well it fits.
 - Shortening instructions can help, but stripping out error handling or validation can make the shorter version fail.
 - The research numbers given in sections 5.1 and 6.1 are as their authors reported them, not limits that hold everywhere, and none of them proves a gain on your own work.
 - The calibration count of 20 for graders is a judgement call, the 5% threshold is a convention, and the one-line-instruction arm and the rule for reusing baseline arms are judgement calls as well.
@@ -421,20 +424,21 @@ How a run ends:
 - **Suggested.** The grading order is fixed: code first, then a person, and a model last, used only for what neither can grade.
 - **Suggested.** A model used as a grader sits at a grade no lower than the model whose work it grades, and ideally belongs to another vendor family.
 - **Suggested.** No model grades unsupervised until its marks have been set beside at least 20 marks a person gave, with the rate of agreement published.
-- In the entry model, models from another vendor family may sit as a jury, but solely on criteria that code cannot judge and a person cannot judge either, and solely after calibration against no fewer than 20 human labels.
+- **Suggested.** In the entry model, models from another vendor family may sit as a jury, but solely on criteria that code cannot judge and a person cannot judge either, and solely after calibration against no fewer than 20 human labels.
 - **Suggested.** Sample some transcripts before you believe a score, and if something is off, mend the grader before you touch the agent.
 - **Suggested.** A score covers two things, how the agent got there and where it ended up; retain whatever traces record the route.
 - **Suggested.** An empty answer fails.
 - **Suggested.** To tune grading rules, read what the practice cases produced, keeping those cases outside the scored set, and lock the rules before scoring begins. Those practice cases do not count as held-out cases.
-- Freeze the grader before any skill evaluation run.
-- Certify the evaluation fixtures as clean before they are used.
-- Keep regression evaluations and capability evaluations apart.
-- Every change is assigned an entry profile that rates it on seven axes: cost, held-out cases, how well it carries over to every declared model, gain, safety, variation, and robustness.
-- Scoring stays at arm's length from the tool that admits changes; whoever scores does not look at that tool's repository at all.
-- Scoring runs start without any memory briefing.
-- Nor can a scoring run recall anything from memory while it works.
-- Admitting a method change and scoring a release are separate decisions.
-- Candidates turned down during selection are kept as evidence, including those that passed their checks, and failed runs are kept too.
+- **Suggested.** Freeze the grader before any skill evaluation run.
+- **Suggested.** Certify the evaluation fixtures as clean before they are used.
+- **Suggested.** Keep regression evaluations and capability evaluations apart.
+- **Suggested.** Every change is assigned an entry profile that rates it on seven axes: cost, held-out cases, how well it carries over to every declared model, gain, safety, variation, and robustness.
+- **Suggested.** Scoring stays at arm's length from the tool that admits changes; whoever scores does not look at that tool's repository at all.
+- **Suggested.** Scoring runs start without any memory briefing.
+- **Suggested.** Nor can a scoring run recall anything from memory while it works.
+- **Suggested.** Admitting a method change and scoring a release are separate decisions.
+- **Required.** Failed runs are kept as evidence.
+- **Suggested.** Candidates turned down during selection are kept as evidence, including those that passed their checks.
 - **Suggested.** Treat any figure a vendor or a paper reports as a claim, and only as a result once your own tasks reproduce it.
 
 ### 7.4 Learning from use
@@ -442,7 +446,7 @@ How a run ends:
 - **Suggested.** Real use is the teacher; whatever it teaches should end up as a test.
 - **Suggested.** Watch three kinds of feedback signal: verdicts (approvals, rejections and overrides), repairs (corrections, retries and reverted changes), and abandonment and lessons (runs abandoned and lessons recorded).
 - **Suggested.** Feedback can mislead. A rejection may really be caused by a stale source, missing data, wrong retrieval, a poor interface or a tool that failed, so the records are consulted for the cause before anything else.
-- **Suggested.** A confirmed defect is captured as a test case before any fix. The case must be seen failing; then the fix goes in; then the case stays in the suite.
+- **Suggested.** A confirmed defect is captured as a test case before any fix. The case should be seen failing; then the fix goes in; then the case stays in the suite.
 - **Suggested.** The first evaluation set is built from 20 to 50 failures that actually occurred, never from made-up ones.
 - **Suggested.** Finding a fault, writing its case and drafting the fix may all be done by an agent, but someone else gives the approval.
 - **Required.** A fix never widens a permission.
@@ -460,7 +464,7 @@ How a run ends:
 | Spend | latency; cost; tokens |
 | Behaviour | each tool call and whether it succeeded; errors |
 
-- Every accepted outcome is logged with three facts: the session's age, the tool, and the model. Logging them is required. For the age, four buckets are offered as a suggestion, not a mandate: brand new; past its first task; past several tasks; open for days.
+- **Suggested.** Every accepted outcome is logged with three facts: the session's age, the tool, and the model. Logging them is advised. For the age, four buckets are offered as a suggestion, not a mandate: brand new; past its first task; past several tasks; open for days.
 - **Suggested.** Sensitive payloads never appear raw in records; a record holds only their hashes and pointers to them.
 - **Suggested.** A run record stays lean: which checks ran and what they returned, what was run and on what model, and hashes covering both inputs and outputs.
 - **Suggested.** If quality falls, the records should (this is a recommendation) let you tell whether cost or context size jumped, a tool failed, data went stale, retrieval changed, a prompt or skill changed, or the model changed.
@@ -469,9 +473,9 @@ How a run ends:
 - **Suggested.** Every record type has a set retention period; bulky debugging material, for instance, goes after 30 days.
 - **Suggested.** While the work they bear on is still live, failed attempts and negative reviews are retained.
 - **Required.** Deleting evidence is treated as irreversible, so an agent never deletes evidence by itself.
-- Keep track of later corrective changes, of rework, and of defects found in review.
-- Keep what workers say separate from what was observed independently.
-- Before any claim about routing or subscriptions, compare review effort and accepted outcomes per task class and per session age. No controlled result backs such a claim yet.
+- **Suggested.** Keep track of later corrective changes, of rework, and of defects found in review.
+- **Required.** Keep what workers say separate from what was observed independently.
+- **Suggested.** Before any claim about routing or subscriptions, compare review effort and accepted outcomes per task class and per session age. No controlled result backs such a claim yet.
 
 ### 7.6 Review and delivery
 
@@ -479,14 +483,14 @@ How a run ends:
 - **Suggested.** If the purpose changes, the change goes back to those, people or agents, who agreed the original.
 - **Suggested.** By the time a person reviews a change, linters, static analysis, tests and CI have all already run.
 - **Suggested.** The action class decides how deep the review goes.
-- **Suggested.** Three kinds of work get a reviewer running a model other than the author's, at the author's grade or above: security changes, plans, and decisions that approve and freeze something; for these that is a must.
+- **Suggested.** Three kinds of work get a reviewer running a model other than the author's, at the author's grade or above: security changes, plans, and decisions that approve and freeze something.
 - **Suggested.** In those reviews a model from a second vendor family is the better choice where one has approval for the data; where none has, the review notes that author and reviewer come from one family, and gives the reason.
 - **Suggested.** Keep changes small, because small ones are quicker to review and easier to revert.
 - **Suggested.** Agents imitate the patterns they find, so drift builds on itself; set aside time for regular clean-up.
 - **Suggested.** Skills, instruction files, tool-server lists and agent configuration count as code: they live in version control, get reviewed, and change only by the usual process.
 - **Suggested.** Delivery is healthy when review time per change and change failure rate stay flat or fall while merged changes grow.
-- A release decision keeps three things apart: the owner's approval, the independent review and the checks.
-- The release decision stays with the owner.
+- **Suggested.** A release decision keeps three things apart: the owner's approval, the independent review and the checks.
+- **Required.** The release decision stays with the owner.
 
 ## 8. Open questions
 

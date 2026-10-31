@@ -1,6 +1,6 @@
 # The why-bureau charter
 
-Version 0.1. Current status: draft specification; no reference implementation yet. Adopted by decision record 0002.
+Version 0.1.1. Current status: draft specification; no reference implementation yet. Adopted by decision record 0002 and revised by decision record 0003.
 
 This charter settles who may decide what. It follows the bounded mandate: people fix the purpose and the limits, agents work within them, and code checks that the limits hold. There are two mandatory parts, and both must be read: the core, sections 1 to 11, and the security annex, section 12.
 
@@ -9,8 +9,8 @@ Labels: **Required** controls bind this repository; **Suggested** controls are p
 ## 1. The bounded mandate
 
 - **Required.** An agent's room to act comes from two things together: the outcome someone approved and the operating limits attached to it. Each run keeps a single progress table inside a ledger it already has (section 4).
-- People return to the loop when an action calls for them, or when work has drifted outside what was approved.
-- Having a lock, a policy document or a clean lint run proves nothing about whether enforcement holds while the system runs.
+- **Required.** People return to the loop when an action calls for them, or when work has drifted outside what was approved.
+- **Required.** Having a lock, a policy document or a clean lint run proves nothing about whether enforcement holds while the system runs.
 
 ## 2. Precedence
 
@@ -19,8 +19,8 @@ Labels: **Required** controls bind this repository; **Suggested** controls are p
 - **Required.** Inside the approved scope, engineering judgement is permitted, and so is work that carries on independently.
 - **Required.** If a project's adopted rules are stricter, the project amends them by its own authorised route before this charter applies to it.
 - **Required.** Section 10 (team model) gives way to every other section. It holds Suggested controls, and any of its lines marked Required merely repeats a safeguard or another section. For a Suggested control there to harden into a rule, a later revision has to make it one, on the strength of data gathered from real runs.
-- Charter 0.1 is written for one owner. In that form it serves projects as design input and gives none of them a runtime grant.
-- Compliance, eligibility of a host, implementation and adoption are four distinct claims, and none of them implies any other.
+- **Required.** Charter 0.1 is written for one owner. In that form it serves projects as design input and gives none of them a runtime grant.
+- **Suggested.** Compliance, eligibility of a host, implementation and adoption are four distinct claims, and none of them implies any other.
 
 ## 3. The four layers of a mandate
 
@@ -73,7 +73,7 @@ Labels: **Required** controls bind this repository; **Suggested** controls are p
 - **Required.** No check is suppressed because a worker asks for it to be not applicable.
 - **Required.** Neither unavailable nor invalid ever turns into a pass.
 - **Required.** If a shared dependency fails, each check depending on it keeps both its unavailable state and its behavioural tests.
-- **Required.** A failure in a shared dependency should be explained by one causal diagnosis rather than by one per dependent check. This line is a recommendation (should, not must).
+- **Suggested.** A failure in a shared dependency should be explained by one causal diagnosis rather than by one per dependent check.
 - **Required.** An authorised role that is not the author decides which other run authorisations are independent of a failure.
 - **Required.** A compromise of a shared host, credential, recorder or evaluator can extend the stop to every lane that relies on it.
 - **Required.** Once authority is withdrawn, or turns out to be genuinely invalid, anything depending on it is stopped on the spot.
@@ -85,7 +85,7 @@ Labels: **Required** controls bind this repository; **Suggested** controls are p
 - **Required.** At every boundary, check afresh the expiry, revocation, fresh activation, the action's real scope and its side effects.
 - **Required.** An unchanged immutable digest or signature computation may be reused when doing so is safe.
 - **Required.** Approval decisions are never cached, and a single-use sign-off is never used a second time.
-- Approval for a waiting action is tied to its expiry, its scope, the candidate and the action itself, and is spent after one use.
+- **Required.** Approval for a waiting action is tied to its expiry, its scope, the candidate and the action itself, and is spent after one use.
 
 ## 6. Dividing decisions between owner and agents
 
@@ -105,7 +105,7 @@ What stops, and what does not:
 
 - **Required.** An action that relies on something unresolved halts. That covers four cases: a conflict of authority nobody has settled, a change to reserved material, an outward effect missing from the list, and a capability missing from the list.
 - **Required.** Work that is independently authorised keeps going while that dependent action is stopped.
-- Each of these blocks whichever action relies on it: an outward effect that needs approval, a cap, a change to reserved material, an unapproved destination, or a host refusal. Meanwhile, ordinary in-scope development, testing and review keep going.
+- **Required.** Each of these blocks whichever action relies on it: an outward effect that needs approval, a cap, a change to reserved material, an unapproved destination, or a host refusal. Meanwhile, ordinary in-scope development, testing and review keep going.
 - **Required.** Citing a requirement or a class does not let a worker enlarge its run authorisation.
 - **Required.** The mechanical boundaries are enforced in code: expiry, the identity of the source, budgets, the permitted classes of action, and the paths a worker may write.
 - **Required.** A passing test, a record that validates against its schema, or a model label adds no authority by itself.
@@ -122,7 +122,7 @@ Approvals:
 - **Required.** The owner gives approvals only by way of the protected mechanism that was adopted, and each approval names its limits, its expiry, a revision, and either one action or a standing scope.
 - **Required.** An agent may never act as the owner, whether by drafting sign-offs in the owner's name or by setting locks as if it were the owner.
 - **Required.** An instruction the owner gives in the current session steers work within existing run authorisations. High-value, irreversible and shared actions still need their protected approval event, and a live instruction cannot stand in for it.
-- A lock pins exact files, with their hashes, to an owner sign-off received over an authenticated channel.
+- **Required.** A lock pins exact files, with their hashes, to an owner sign-off received over an authenticated channel.
 - **Required.** Nobody invents a prospective approval for work already finished; a record made after the fact is labelled truthfully as retrospective.
 
 Identity:
@@ -146,7 +146,7 @@ Trying identity out:
 Correcting records:
 
 - **Required.** Accepted audit records are corrected only by appending.
-- Signed records only ever grow by appended corrections, whether or not they are accepted audit records; in-place edits that keep the earlier versions are allowed for operational notes and nothing else.
+- **Suggested.** Any other signed record is corrected by appending as well; only operational notes may be edited in place, and their earlier versions are kept.
 - **Required.** Operational notes can be fixed in place, as long as their history is kept.
 - **Required.** A proposed record's content is validated from its final candidate, keeping incident history where real effects or leaked secrets make it relevant.
 
@@ -172,7 +172,7 @@ Correcting records:
 - **Required.** When an amendment is switched on through an authenticated channel, that switch reaches exactly the scope the amendment names.
 - **Required.** The amendment yields a new mandate revision. Unchanged documents need not be copied again because of it, and the product does not need a new version just because of it.
 - **Required.** A large shift in scope can still call for planning afresh.
-- A scoped, authenticated amendment leaves substantial scope under the product's own versioning rules.
+- **Suggested.** A scoped, authenticated amendment leaves substantial scope under the product's own versioning rules.
 - **Required.** Code checks where an amendment and the work explicitly overlap.
 - **Required.** Where the effect on dependencies is unclear, an authorised reviewer or chief clerk who is not the author decides it.
 - **Required.** Whoever judges that effect may not rewrite reserved commitments, enlarge a run authorisation, or sign off its own affected work.
@@ -275,9 +275,10 @@ This section is Suggested except where a line says otherwise, and it names no ve
 ## 11. Adopting and evaluating this charter
 
 - **Required.** Adoption records that the owner accepts delegated engineering with one shared progress table. Three further events each happen on their own: activation by cryptography, adoption by each individual project, and qualification at runtime.
-- A charter revision involves four stages that stay separate: qualification at runtime, explicit adoption, offering, and locking.
-- Whether to take up a charter revision is something each project settles for itself by its own approved process; importing a text switches on no successor charter.
-- A pin further down the chain stays put when a fresh revision is put on offer, unless someone moves it.
+- **Required.** Explicit adoption and locking stay apart. Qualification at runtime stays apart from both.
+- **Suggested.** Offering a charter revision stays distinct from those stages.
+- **Required.** Whether to take up a charter revision is something each project settles for itself by its own approved process; importing a text switches on no successor charter.
+- **Required.** A pin further down the chain stays put when a fresh revision is put on offer, unless someone moves it.
 - **Required.** Each project checks how the charter fits, and what migrating would involve, against the contract it has today.
 - **Required.** Merely receiving this charter switches on no product amendment and leaves every scoring rubric as it was.
 - **Required.** Evaluations that have nothing to do with each other stay independent and keep their information walled off.
@@ -293,18 +294,18 @@ Evaluation:
 
 Checklist for taking up a charter revision. Work through it top to bottom; no item may start before the one above it is finished.
 
-1. Check the incoming files: confirm every file of the revision is intact and is what it claims to be.
-2. Name who is affected: write down every consumer that relies on the charter.
-3. Trace the acceptance impact: write down every acceptance mapping the revision touches.
-4. Get a second reader: someone who did not prepare the adoption reviews it.
-5. Pin what is being taken up: record the exact identity of every adopted item.
-6. Switch it on: the adopter's owner activates the revision. This item is never done before items 1 to 5.
-7. Note the result: after activation, the adopter records which conformance level it reached.
+1. **Suggested.** Check the incoming files: confirm every file of the revision is intact and is what it claims to be.
+2. **Suggested.** Name who is affected: write down every consumer that relies on the charter.
+3. **Suggested.** Trace the acceptance impact: write down every acceptance mapping the revision touches.
+4. **Suggested.** Get a second reader: someone who did not prepare the adoption reviews it.
+5. **Suggested.** Pin what is being taken up: record the exact identity of every adopted item.
+6. **Suggested.** Switch it on: the adopter's owner activates the revision. This item is never done before items 1 to 5.
+7. **Suggested.** Note the result: after activation, the adopter records which conformance level it reached.
 
 Release format:
 
-- A charter release that spans several files carries a SHA-256 manifest covering all of them.
-- Signatures on a charter release are checked independently through the adopter's own authenticated process.
+- **Suggested.** A charter release that spans several files carries a SHA-256 manifest covering all of them.
+- **Suggested.** Signatures on a charter release are checked independently through the adopter's own authenticated process.
 - The machine-readable charter (`charter.yaml` or `charter.json`) follows charter schema 0.1.
 
 ### What this charter does not establish
@@ -318,31 +319,32 @@ The annex covers eight control areas: bounded security assessment, synthetic tes
 Inside the bounds:
 
 - A job sheet is produced by code, never by an agent. In it the run finds, quoted, everything that bounds it: which repository and branch, which paths it may touch, its caps, the acceptance criteria it must meet, and the digest of every locked input.
-- Workers have no write access to the acceptance in force, the evaluators, the approval records or the audit history.
-- New spending halts while accounting or price data is unavailable.
-- Input that is malformed goes into quarantine and is never acted on.
-- When a person stops a run, its state is preserved.
-- Leases ensure that the same work never has two live runs.
-- One gate evaluates every lane start, every tool call and every model call, and answers run, refuse or wait.
+- **Required.** Workers have no write access to the acceptance in force, the evaluators, the approval records or the audit history.
+- **Suggested.** New spending halts while accounting or price data is unavailable.
+- **Suggested.** Input that is malformed goes into quarantine and is never acted on.
+- **Suggested.** When a person stops a run, its state is preserved.
+- **Suggested.** Leases ensure that the same work never has two live runs.
+- **Suggested.** One gate evaluates every lane start, every tool call and every model call, and answers run, refuse or wait.
 
 Hosts and automation:
 
-- Running a security target needs confinement, resource limits, custodial intake of results and its own authority; no process rule can stand in for these.
-- Before a host is used, the checks it must pass are run against synthetic data alone.
+- **Suggested.** Running a security target needs confinement, resource limits, custodial intake of results and its own authority; no process rule can stand in for these.
+- **Suggested.** Before a host is used, the checks it must pass are run against synthetic data alone.
 - A trusted host survey captures how the host is set up right now: isolation, credentials, hooks, routes and configuration. A survey grants nothing.
 - Kept apart from the host survey, an automation register records, per project, every deployment trigger, bot, CI pipeline and notification.
-- The host survey and the automation register must both be fresh at entry, at each resume, and before any action that relies on them.
-- A changed automation prompts a fresh check. Under the broadest-effect rule an action is classed by what it now triggers, so a plain push that now starts a deployment counts as a deployment.
+- **Suggested.** The host survey and the automation register should both be fresh at entry, at each resume, and before any action that relies on them.
+- **Suggested.** A changed automation prompts a fresh check. Under the broadest-effect rule an action is classed by what it now triggers, so a plain push that now starts a deployment counts as a deployment.
 
 Enforcement modes, as conformance levels:
 
-- Unattended work is allowed at level 3 alone, meaning checks on every call made on a qualified host.
+- Level 3 is checks on every call made on a qualified host.
+- **Suggested.** Unattended work is allowed at level 3 alone.
 - Level 2 is checks at merge time.
 - Level 1 is an attended process.
 
 Measures:
 
-- For the bounded mandate, track four measures: the hours between a lock and its candidate; owner actions together with how long they waited; outcomes of host checks; and refusal rates. This text shows no measured gain from the pattern.
+- **Suggested.** For the bounded mandate, track four measures: the hours between a lock and its candidate; owner actions together with how long they waited; outcomes of host checks; and refusal rates. This text shows no measured gain from the pattern.
 
 ## Open questions
 

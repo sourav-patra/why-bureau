@@ -8,9 +8,85 @@ Status: every source below is reported, not read in full for this repository. "U
 
 - Only your own measurements show that an idea works on your tasks; a citation lends it support and nothing more.
 - Each source is listed once, with the parts of why-bureau it supports and whether it was read or only reported. This map is reference material for the tenets and practice sections, not part of the rules.
-- Check date for the comparable tools: 27 October 2026. They do related things, nothing more: they may be described and compared, but they back no claim that they are secure or equivalent, and no policy rule ever names one.
+- **Suggested.** Check date for the comparable tools: 27 October 2026. They do related things, nothing more: they may be described and compared, but they back no claim that they are secure or equivalent, and no policy rule ever names one.
 - Fit and conformance of a comparable tool can only be judged by evaluating it at implementation level; comparing descriptions proves neither that it meets the combined controls nor that it falls short of them.
 - The sign test used in METHOD.md section 7.2 is a standard non-parametric test; the reference values there were computed for the stated case counts.
+
+## What backs each rule
+
+The numbers are entries in the lists below. Sourced: a listed source supports the rule as written. Partly: a source supports the idea, but a number or a condition in the rule is the authors' own choice. Judgement: no source sets the rule; it stays a design choice until measurements on the adopting team's tasks back it (METHOD.md section 1).
+
+### The tenets
+
+| Tenet | Entries |
+|---|---|
+| 1. Trust what you measured | 86, 87, 88 |
+| 2. Code makes the decision | 41, 43, 44, 45 |
+| 3. Reading is not obeying | 1, 6 |
+| 4. Bound the reach, not each step | 6, 7, 8 |
+| 5. No autonomy without a check | 15, 36, 38, 39, 46 |
+| 6. Smallest kit, smallest context | 47, 49, 53 |
+| 7. Grow structure only when it repays its cost | 33, 34, 35 |
+| 8. If it must always hold, make it run | 42, 50, 51, 52 |
+| 9. Scaffolding expires | 40, 41, 54, 55 |
+| 10. A second pair of eyes | 20, 21, 22, 40, 51 |
+| 11. Write state down durably | 14, 37, 38, 39 |
+| 12. Results are observed, not announced | 39 |
+| 13. Use maintained tools before building one | 13 |
+| 14. Count what was accepted and stayed | 80, 81, 82, 83, 84, 85, 89 |
+
+### The safeguards and the practice sections
+
+| Part of METHOD.md | Entries |
+|---|---|
+| Section 3, safeguards S1 to S5 and the limit of two | 1, 6, 8, 13, 14 |
+| 5.1 and 5.2, instruction files, context and memory | 47, 48, 49, 50, 51, 52, 53 |
+| 5.3, checks around actions | 8, 9 |
+| 5.4, choosing a box | 6, 7 |
+| 5.5, what to build and vetting what you install | 13, 36, 49, 54, 68, 70, 71, 72, 73, 124 |
+| 5.6, models and providers | 53, 55, 89, 90, 91, 93, 97 |
+| 6.1 to 6.3, sessions, coordination and escalation | 34, 36, 37, 39, 42, 97 |
+| 6.4, cost | 34, 45, 90 |
+| 7.1 to 7.3, checking and grading | the table below |
+| 7.4, learning from use | 15, 17 |
+| 7.5, records | 42, 98 |
+| 7.6, review and delivery | 43, 44, 52, 82, 83 |
+
+### Checking, grading and the later additions, topic by topic
+
+Each topic points at the METHOD.md section that states the rule; this table records only what backs it.
+
+| Topic | METHOD.md | Entries | Basis |
+|---|---|---|---|
+| Depth set by risk | 7.1 | 15, 28 | Judgement, resting on the rows below |
+| With-and-without comparison | 7.1 and 7.2 | 28, 72, 73 | Partly; its thresholds are the authors' choice |
+| Repeated runs | 7.1 and 7.2 | 15, 25 | Partly; the count is the authors' choice |
+| Held-out cases | 7.1 | 27 | Sourced |
+| Hostile and edge input | 7.1 | none | Judgement |
+| Probing with hostile instructions and false authority | 7.1 | 1, 5 | Sourced |
+| Spend per task | 7.1 | 34, 90 | Sourced |
+| Every routed model | 7.1 | 55, 91 | Sourced |
+| Equal token budgets | 7.2 | 34, 35 | Sourced |
+| Same environment for both arms | 7.2 | 19 | Sourced |
+| Stating what went unmeasured | 7.2 | 88 | Sourced |
+| Grading the path and keeping traces | 7.3 | 15, 16 | Sourced |
+| Faulty or gamed graders | 7.3 | 15, 18 | Sourced |
+| Order of graders | 7.3 | 20, 21, 22 | Sourced |
+| Outside figures as claims | 7.3 | none | Judgement |
+| Empty answers and rules fixed in advance | 7.3 | none | Judgement |
+| Calibrating a model grader | 7.3 | 15, 17, 24 | Partly; the case count is the authors' choice |
+| Tuning the grader on a separate set | 7.3 | 23 | Sourced |
+| Naming the arms | 7.2 | 29, 30, 70 | Partly; the one-line arm is the authors' choice |
+| Reusing old baselines | 7.2 | 19, 55 | Judgement, informed by these sources |
+| Test fixed before the run | 7.2 | 26 | Sourced; 5% is a convention |
+| Purpose | Section 2 | none | Judgement |
+| Checks out of the agent's reach | 5.3 | 39 | Partly; the source covers tests only |
+| Sealed settings layers | 5.5 | 124 | Partly; the pre-run checksum and the unattended rule are the authors' choice |
+| Model as the last grader | 7.3 | 20, 21, 22 | Partly; family and grade are the authors' choice |
+| Escalation path | 6.3 | none | Judgement |
+| Lean records and retention | 7.5 | none | Judgement; 30 days is an example |
+| Purpose behind each change | 7.6 | none | Judgement |
+| Cross-model review | 7.6 | 20, 21, 22 | Judgement; these sources do not establish it |
 
 ## Prompt injection, authority and isolation
 
@@ -19,7 +95,7 @@ Why text is data, why capability is limited at the boundary, and how sandboxes a
 1. Agents Rule of Two: A Practical Approach to AI Agent Security. Meta, 2025. <https://ai.meta.com/blog/practical-ai-agent-security/> Source of the two-of-three limit; treats all agent input as data and motivates injection and authority probes (METHOD.md sections 3 and 7.1). Status: Reported; URL checked.
 2. New prompt injection papers. Simon Willison, 2025. <https://simonwillison.net/2025/Nov/2/new-prompt-injection-papers/> Prompt injection has no solution yet, which is why S4 and tenet 3 allow no relaxation. Status: Reported; URL checked.
 3. Defeating Prompt Injections by Design (CaMeL). arXiv 2503.18813, 2025. No URL given; arXiv:2503.18813. Separating control flow from untrusted data, the design idea behind S4. Status: Reported; no URL to check.
-4. The Dual LLM pattern. Simon Willison, 2023. No URL given; title and author only. Keeping the model that reads untrusted text away from privileged actions, an early form of the two-of-three limit. Status: Reported; no URL to check.
+4. The Dual LLM pattern. Simon Willison, 2023. No URL given; title and author only. Keeping the model that reads untrusted text away from privileged actions, an early form of the two-of-three limit (S4 and tenet 3). Status: Reported; no URL to check.
 5. OWASP Top 10 for Agentic Applications for 2026. OWASP, 2025. <https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/> A public list of agent risks, a source for injection and authority test cases (METHOD.md section 7.1). Status: Reported; URL checked.
 6. How we contain Claude across products. Anthropic, 2026. <https://www.anthropic.com/research/how-we-contain-claude> Isolation grades, limits at the boundary instead of per-step approval, and input treated as data (tenets 3 and 4, METHOD.md section 5.4). Status: Reported; URL checked.
 7. Making Claude Code safer with sandboxing. Anthropic, 2025. <https://www.anthropic.com/research/claude-code-sandboxing> An OS sandbox with both network and filesystem limits (tenet 4, isolation grades G1 to G3). Status: Reported; URL checked.
@@ -69,7 +145,7 @@ When to add agents and harness parts, and how long-running work survives.
 41. Build Better AI Agents: 5 Developer Tips from the Agent Bake-Off. Google, 2026. <https://developers.googleblog.com/build-better-ai-agents-5-developer-tips-from-the-agent-bake-off/> Decidable logic in tested code, and harness parts re-tested as models change (tenets 2 and 9). Status: Reported; URL checked.
 42. Production-Ready AI Agents: 5 Lessons from Refactoring a Monolith. Google, 2026. <https://developers.googleblog.com/production-ready-ai-agents-5-lessons-from-refactoring-a-monolith/> Mechanical enforcement, simple workflows and observable records in production agents (tenet 8, METHOD.md sections 6.2 and 7.5). Status: Reported; URL checked.
 43. Minions: Stripe's one-shot, end-to-end coding agents. Stripe, 2026. <https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents> Deterministic gates around agents and review-led delivery (tenet 2, METHOD.md section 7.6); design details are second-hand. Status: Reported; URL checked.
-44. Stripe coding agents design report (title not given). InfoQ, 2026. <https://www.infoq.com/news/2026/03/stripe-autonomous-coding-agents/> Independent reporting on the same design, supporting the same points; second-hand. Status: Reported; URL checked.
+44. Stripe coding agents design report (title not given). InfoQ, 2026. <https://www.infoq.com/news/2026/03/stripe-autonomous-coding-agents/> Independent reporting on the same design, supporting the same points; second-hand (tenet 2, METHOD.md section 7.6). Status: Reported; URL checked.
 45. Code execution with MCP for efficient agents. Anthropic, 2025. <https://www.anthropic.com/research/code-execution-with-mcp> Work moved into code the agent runs stays testable and costs fewer tokens (tenet 2). Status: Reported; URL checked.
 46. 2026 Agentic Coding Trends Report. Anthropic (vendor report), 2026. <https://resources.anthropic.com/2026-agentic-coding-trends-report> A runnable verifier as the precondition for autonomy (tenet 5). Status: Reported; URL checked.
 
@@ -96,8 +172,8 @@ How much to load into context, what instruction files hold, and how models diffe
 63. Over-refusal study. arXiv 2505.08054, 2025. <https://arxiv.org/html/2505.08054v1> Refusal is diagnosed apart from instruction following (METHOD.md section 5.6). Status: Reported; URL checked.
 64. Refusal and compliance audit. arXiv 2605.05427, 2026. <https://arxiv.org/html/2605.05427> A refusal is its own outcome, not a cue to try another model (S5). Status: Reported; URL checked.
 65. Persona study (title not given). arXiv 2311.10054, 2023. No URL given; arXiv:2311.10054. A persona does not make answers more accurate (METHOD.md section 5.5). Status: Reported; no URL to check.
-66. Persona study (title not given). arXiv 2512.05858, 2025. No URL given; arXiv:2512.05858. Further evidence that a persona adds no accuracy. Status: Reported; no URL to check.
-67. Persona study (title not given). arXiv 2603.18507, 2026. No URL given; arXiv:2603.18507. Further evidence that a persona adds no accuracy. Status: Reported; no URL to check.
+66. Persona study (title not given). arXiv 2512.05858, 2025. No URL given; arXiv:2512.05858. Further evidence that a persona adds no accuracy (METHOD.md section 5.5). Status: Reported; no URL to check.
+67. Persona study (title not given). arXiv 2603.18507, 2026. No URL given; arXiv:2603.18507. Further evidence that a persona adds no accuracy (METHOD.md section 5.5). Status: Reported; no URL to check.
 
 ## Vetting skills and plugins
 
@@ -110,10 +186,10 @@ Skills, plugins and catalogues treated as dependencies.
 72. SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks. arXiv 2602.12670, 2026. <https://arxiv.org/abs/2602.12670> Skills help some tasks and hurt others, so measure with paired comparisons (METHOD.md sections 5.5 and 7.2). Status: Reported; URL checked.
 73. SWE-Skills-Bench: Do Agent Skills Actually Help in Real-World Software Engineering?. arXiv 2603.15401, 2026. <https://arxiv.org/abs/2603.15401> Many skills show no gain on real engineering tasks, so test with and without (METHOD.md section 5.5). Status: Reported; URL checked.
 74. anthropics/skills. Anthropic (GitHub). <https://github.com/anthropics/skills> A public skill catalogue: a fine starting point that still needs checking (METHOD.md section 5.5). Status: Reported; URL checked.
-75. agent-skills. addyosmani (GitHub). <https://github.com/addyosmani/agent-skills> A public skill collection, an example of a shared catalogue to vet. Status: Reported; URL checked.
-76. ECC. affaan-m (GitHub). <https://github.com/affaan-m/ECC> A large workflow pack, an example of something to read and vet before installing. Status: Reported; URL checked.
-77. ponytail. DietrichGebert (GitHub). <https://github.com/DietrichGebert/ponytail> A minimal-change coding skill, an example of a single-purpose skill. Status: Reported; URL checked.
-78. ponytail-benchmark. KuldeepB19 (GitHub). <https://github.com/KuldeepB19/ponytail-benchmark> A benchmark for that skill, an example of measuring a skill with and without it. Status: Reported; URL checked.
+75. agent-skills. addyosmani (GitHub). <https://github.com/addyosmani/agent-skills> A public skill collection, an example of a shared catalogue to vet (METHOD.md section 5.5). Status: Reported; URL checked.
+76. ECC. affaan-m (GitHub). <https://github.com/affaan-m/ECC> A large workflow pack, an example of something to read and vet before installing (METHOD.md section 5.5). Status: Reported; URL checked.
+77. ponytail. DietrichGebert (GitHub). <https://github.com/DietrichGebert/ponytail> A minimal-change coding skill, an example of a single-purpose skill (METHOD.md section 5.5). Status: Reported; URL checked.
+78. ponytail-benchmark. KuldeepB19 (GitHub). <https://github.com/KuldeepB19/ponytail-benchmark> A benchmark for that skill, an example of measuring a skill with and without it (METHOD.md sections 5.5 and 7.2). Status: Reported; URL checked.
 79. llm-council. karpathy (GitHub). <https://github.com/karpathy/llm-council> Several models answering together, related to model juries (METHOD.md section 7.3). Status: Reported; URL checked.
 
 ## Outcomes, productivity and cost
@@ -141,7 +217,7 @@ Message protocols, traces, append-only records and recovery.
 93. The 2026-07-28 Specification. Model Context Protocol, 2026. <https://blog.modelcontextprotocol.io/posts/2026-07-28/> A revision of the same protocol, cited for routing practice (METHOD.md section 5.6). Status: Reported; URL checked.
 94. Agent2Agent (A2A) Protocol Specification v1.0. A2A project. <https://a2a-protocol.org/latest/specification/> Explicit task states for agents that talk across boundaries; transport is not approval (METHOD.md sections 3 and 6.2). Status: Reported; URL checked.
 95. A2A, Streaming and Asynchronous Operations. A2A project. <https://a2a-protocol.org/latest/topics/streaming-and-async/> Long-running agent tasks report their state asynchronously, which fits the rule that agents talking across vendor or team boundaries speak an open protocol whose task states are explicit (METHOD.md section 6.2). Status: Reported; URL checked.
-96. A2A. a2aproject (GitHub). <https://github.com/a2aproject/A2A> Reference implementation of the agent-to-agent protocol. Status: Reported; URL checked.
+96. A2A. a2aproject (GitHub). <https://github.com/a2aproject/A2A> Reference implementation of the agent-to-agent protocol (METHOD.md section 6.2). Status: Reported; URL checked.
 97. A2A Protocol Surpasses 150 Organizations, Lands in Major Cloud Platforms, and Sees Enterprise Production Use in First Year. Linux Foundation, 2026. <https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud-platforms-and-sees-enterprise-production-use-in-first-year> Wide use of an open agent protocol, supporting open protocols across vendor boundaries (METHOD.md section 6.2). Status: Reported; URL checked.
 98. OpenTelemetry semantic conventions for generative AI. OpenTelemetry, 2026. <https://github.com/open-telemetry/semantic-conventions-genai> Standard fields for observability and audit records of model calls (METHOD.md section 7.5). Status: Reported; URL checked.
 99. OpenTelemetry semantic conventions for generative AI spans. OpenTelemetry. <https://github.com/open-telemetry/semantic-conventions/blob/main/docs/gen-ai/gen-ai-spans.md> Trace span fields for model calls (METHOD.md section 7.5, RECORDS.md). Status: Reported; URL checked.
@@ -151,23 +227,23 @@ Message protocols, traces, append-only records and recovery.
 103. Durable execution write-up on DBOS, Inngest, Restate and Temporal (title not given). Reactify Solutions, 2026. <https://www.reactify-solutions.com/articles/durable-ai-agents-2026> Durable execution lets agents resume after a crash without losing or repeating work (tenet 11). Status: Reported; URL checked.
 104. Crash-Only Software. HotOS IX, 2003. No URL given; USENIX HotOS IX (2003); no standard identifier given. Systems designed to recover by restarting (tenet 11, ADAPTERS.md, "Operations are idempotent"). Status: Reported; no URL to check.
 105. Site Reliability Engineering. O'Reilly, 2016. No URL given; title and publisher only. Reliability practice for production services, behind bounded retries and run limits (METHOD.md section 6.3). Status: Reported; no URL to check.
-106. The Site Reliability Workbook. O'Reilly, 2018. No URL given; title and publisher only. Applied reliability practice, as for the entry above. Status: Reported; no URL to check.
+106. The Site Reliability Workbook. O'Reilly, 2018. No URL given; title and publisher only. Applied reliability practice, as for the entry above (METHOD.md section 6.3). Status: Reported; no URL to check.
 107. QuickCheck. ICFP 2000, 2000. No URL given; Koen Claessen and John Hughes, ICFP 2000, DOI 10.1145/351240.351266. Property-based testing with generated inputs, one way to probe bad and boundary input (METHOD.md section 7.1). Status: Reported; no URL to check.
-108. Documenting Architecture Decisions. 2011. No URL given; Michael Nygard, Cognitect blog (2011); title and publisher only. Short decision records, the form used in decisions/. Status: Reported; no URL to check.
+108. Documenting Architecture Decisions. 2011. No URL given; Michael Nygard, Cognitect blog (2011); title and publisher only. Short decision records, the form used in decisions/ (the records in decisions/). Status: Reported; no URL to check.
 
 ## Standards, compliance and licensing
 
 Standards that the safeguards and repository practice map onto.
 
-109. ISO/IEC 27001:2022. ISO/IEC, 2022. No URL given; ISO/IEC 27001:2022. Information security controls that an organisation's own policies, which take precedence, may draw on. Status: Reported; no URL to check.
-110. ISO/IEC 42001:2023. ISO/IEC, 2023. No URL given; ISO/IEC 42001:2023. A management system for AI, a frame for the organisation policies the method defers to. Status: Reported; no URL to check.
-111. NIST AI RMF 1.0. NIST, 2023. No URL given; NIST AI 100-1, DOI 10.6028/NIST.AI.100-1. Risk management for AI systems, the same role as above. Status: Reported; no URL to check.
+109. ISO/IEC 27001:2022. ISO/IEC, 2022. No URL given; ISO/IEC 27001:2022. Information security controls that an organisation's own policies, which take precedence, may draw on (METHOD.md section 1). Status: Reported; no URL to check.
+110. ISO/IEC 42001:2023. ISO/IEC, 2023. No URL given; ISO/IEC 42001:2023. A management system for AI, a frame for the organisation policies the method defers to (METHOD.md section 1). Status: Reported; no URL to check.
+111. NIST AI RMF 1.0. NIST, 2023. No URL given; NIST AI 100-1, DOI 10.6028/NIST.AI.100-1. Risk management for AI systems, the same role as above (METHOD.md section 1). Status: Reported; no URL to check.
 112. NIST SP 800-218 (SSDF) and SP 800-218A. NIST. <https://csrc.nist.gov/pubs/sp/800/218/a/final> Secure development practice extended to AI systems (METHOD.md section 5.5). Status: Reported; URL checked.
 113. GDPR Article 5. European Union. No URL given; Regulation (EU) 2016/679, Article 5. Data minimisation and limited retention, behind S3 and retention periods (METHOD.md section 7.5). Status: Reported; no URL to check.
 114. SLSA. SLSA project. <https://slsa.dev> Build provenance for the supply chain, related to pinned and reviewed host components (ADAPTERS.md). Status: Reported; URL checked.
 115. OpenSSF Scorecard. OpenSSF. <https://securityscorecards.dev> Automated checks of a repository's security practice; such a score never qualifies a host (METHOD.md section 1). Status: Reported; URL checked.
-116. SPDX. SPDX project. <https://spdx.dev> Machine-readable licence identifiers. Status: Reported; URL checked.
-117. REUSE specification. REUSE (FSFE). <https://reuse.software> Every file states its licence and copyright. Status: Reported; URL checked.
+116. SPDX. SPDX project. <https://spdx.dev> Machine-readable licence identifiers (METHOD.md section 5.5, reading the licence first). Status: Reported; URL checked.
+117. REUSE specification. REUSE (FSFE). <https://reuse.software> Every file states its licence and copyright (METHOD.md section 5.5, reading the licence first). Status: Reported; URL checked.
 118. Semantic Versioning 2.0.0. semver.org. <https://semver.org> Version numbers that signal compatibility, as for schema versions (ADAPTERS.md, "Sentinels"). Status: Reported; URL checked.
 
 ## Comparable tools
@@ -179,6 +255,12 @@ Listed alphabetically. Each does something related to part of why-bureau; see "H
 121. CrewAI. crewAIInc (GitHub). <https://github.com/crewAIInc/crewAI> Teams of agents with assigned roles, and orchestrated workflows; the project states MIT. Status: Reported; URL checked.
 122. oh-my-subagents. ringlochid (GitHub). <https://github.com/ringlochid/oh-my-subagents> Runs on one machine, coordinates agent teams that can be reused, keeps task progress durable, and resumes after an interruption; MIT core. Status: Reported; URL checked.
 123. OpenHands. OpenHands (GitHub). <https://github.com/OpenHands/OpenHands> Agents that write code, deployed inside a sandbox; that repository states MIT. Status: Reported; URL checked.
+
+## Configuration layers
+
+How settings stack, and which ones nobody below the organisation can change.
+
+124. Settings files and precedence. Anthropic, Claude Code documentation. <https://code.claude.com/docs/en/settings> Settings managed by the organisation that no personal or project file can override, the basis for sealing the safeguard settings in layered agent configuration (METHOD.md section 5.5; ADAPTERS.md, "Rendering and entrenched layers"). Status: Reported; URL checked.
 
 ## Specifications used by the repository's own files
 

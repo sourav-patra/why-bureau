@@ -6,10 +6,11 @@ Every run leaves one permanent run record, in which the host's observations and 
 
 ## Run records
 
-- Four things are bound by every run record: the run, the host, the authority and the candidate.
-- Any change to an input the record binds invalidates the run records that depend on it.
+- **Suggested.** Four things are bound by every run record: the run, the host, the authority and the candidate.
+- **Suggested.** Any change to an input the record binds invalidates the run records that depend on it.
 - **Required** (repeats charter section 10.1 and tenet 12). Exit codes, outcomes and commands that a worker writes down are claims until the host observes or checks them independently.
-- **Required** (repeats charter section 6). Every run must have a complete run record, but completeness alone never establishes acceptance.
+- **Required** (repeats charter section 6). Completeness alone never establishes acceptance.
+- **Suggested.** Every run should have a complete run record.
 - **Suggested.** The host's observations carry authentication and are tied to two things: the digests of the artifacts as finally produced, and the worker body in canonical form.
 - **Suggested.** Run records are small and permanent. The copy that counts is held in protected storage, an append-only database for example, and every other copy refers to it by its digest.
 - **Suggested.** A run record links the review, the session log, the purpose item, the attempt, the run and the assignment.
@@ -35,16 +36,16 @@ Every group below is mandatory.
 | review | Who judged it? | A reference to the verdict, the candidate and acceptance digests reviewed, and the reviewer's session and vendor family. |
 
 - Wherever they apply, the qualification id and the render digest are mandatory.
-- Usage provenance tells observations apart from estimates and from claims.
-- A run record without run ids is incomplete; they are mandatory.
-- Validating against the schema checks structure; verifying protected records checks origin and bindings.
+- **Suggested.** Usage provenance tells observations apart from estimates and from claims.
+- **Required** (repeats charter section 7). A run record without run ids is incomplete; they are mandatory.
+- **Suggested.** Validating against the schema checks structure; verifying protected records checks origin and bindings.
 
 The machine-readable form is `schemas/run-record.schema.json`.
 
 ## Review
 
 - **Required** (repeats charter section 6). Even an ordinary review needs an identity other than the author's.
-- **Required** (repeats charter section 6). A reviewer must not be the author of the candidate, across posts and sessions. **Suggested:** nor of any earlier attempt.
+- **Required** (repeats charter section 6). A reviewer must not be the author of the candidate, across posts and sessions. **Suggested:** a reviewer also should not have written any earlier attempt.
 - **Required** (repeats charter section 7). Who the reviewer is gets established from authenticated records of the launch.
 - **Suggested.** A reviewer reads the real diff and whatever source it touches.
 - **Suggested.** A verdict is tied to the digests of the exact candidate and of the reserved acceptance, and any change to the candidate voids it.
@@ -56,7 +57,8 @@ The machine-readable form is `schemas/run-record.schema.json`.
 
 What stays, regardless of age:
 
-- **Required** (repeats charter section 8). Failed attempts, negative reviews, and any evidence needed to make sense of a failure or to reproduce it are protected whether anything cites them or not, and they stay protected after a later success.
+- **Required** (repeats charter section 8). Failed attempts and negative reviews are protected whether anything cites them or not, and they stay protected after a later success.
+- **Suggested.** The same protection covers any evidence needed to make sense of a failure or to reproduce it.
 - **Suggested.** Keep cited material and the evidence that qualification, acceptance and audit need; for adverse records this is **Required** (repeats charter section 8).
 - **Suggested.** Evidence that a decision, lock, incident or open issue cites stays available.
 - **Required** (repeats S2). Audit records of shared or irreversible actions keep whatever period the adopted policy requires, and the default 30-day retention cannot cut it short.
@@ -68,7 +70,7 @@ How long the rest is kept:
 - **Suggested.** The default 30-day retention also covers superseded draft revisions: the final revision stays with its reviews, and older revisions go only once the safeguards for audit material, for records of failure and for anything referenced have been applied.
 - **Suggested.** Memory records are classified before any deletion policy for evidence or run folders is applied.
 - **Suggested.** If a recall note quotes a source that is about to be removed, then either the summary preserves the quoted words exactly, or the note is pointed at the summary after its provenance has been checked.
-- **Suggested.** The protected sweep must first establish that no adverse record has gone missing, lost any of its contents or become unreadable; until it has, surplus payloads kept for debugging do not expire.
+- **Suggested.** The protected sweep should first establish that no adverse record has gone missing, lost any of its contents or become unreadable; until it has, surplus payloads kept for debugging do not expire.
 
 What a deletion leaves behind:
 
@@ -78,8 +80,8 @@ What a deletion leaves behind:
 
 Who may delete:
 
-- **Required** (repeats S2). Deleting evidence is never a worker's job.
-- **Required** (repeats S2). Workers have no ability to edit the retention index and no ability to delete evidence.
+- **Suggested.** Deleting evidence is never a worker's job.
+- **Suggested.** Workers have no ability to edit the retention index and no ability to delete evidence.
 
 The records sweep, step by step:
 

@@ -6,7 +6,7 @@ The prototype grows in numbered steps, and a step's acceptance items must all pa
 
 ## Guiding rule
 
-Begin with attended work, and qualify the real launch path before automating more.
+**Suggested.** Begin with attended work, and qualify the real launch path before automating more.
 
 ## Where things stand
 
@@ -14,15 +14,15 @@ This repository already holds the first slice of step 1, the schemas and their c
 
 ## Steps
 
-| Step | Working name | What gets made | Finished when |
-|---|---|---|---|
-| 1 | Foundations | Machine-readable definitions of roles and run records, the smallest workable escalation path, rendering of configuration, one adapter and one host. | Two reviewers independent of the authors sign off, and one of those reviews looks at security; launch tests exercise a run whose authority is withdrawn partway through, a request sent twice, hostile file paths, and a crash that happens before anything is recorded; any attempt to loosen an entrenched field is turned away; and an area override configured in the escalation path is honoured. |
-| 2 | First real project | Run records the host authenticates, each carrying the required run ids and usage figures; the operator's own settings layer; and a sample project. | The sample project's own checks are green; edits by workers, replayed records and records stitched together from parts are all turned away; tampered memory makes nothing happen; and every review is tied to the precise candidate it judged. |
-| 3 | Routing | The dispatcher, wired in. | Assignments that are harder get a higher grade; destinations nobody approved are refused; and a refusal or a wait stays in force with no route around it. |
-| 4 | Watched pilot | Joins across observations, plus a pilot that a person watches throughout. | Seven days of reports exist, broken down by grade and by role, covering cost and human interventions for each accepted outcome, how escalations were closed, and which observations were missing. |
-| 5 | Self-checking | The compliance checker and the sentinels. | Projects using the model report on independence, run records, sentinels, minimum grades and schemas; and the checker cannot sign off changes to itself. |
-| 6 | Running alone | The runtime for unattended work, delivered in two stages, the first before the second. | Stage one: usage collection has been verified and reservations settle correctly. Stage two: a full unattended day on a qualified setup, with an entry check every time the runtime wakes and run limits enforced. |
-| 7 | Clearing old evidence | The protected records sweep. | When the sweep rehearses a deletion, its list spares both evidence that something cites and adverse records that nothing cites; and the tests take in the markers that stand in for deleted payloads, memory sources that recall notes quote, references that are ambiguous or unreadable, and each reference source and form. |
+| Step | Working name | What gets made | Finished when | Label |
+|---|---|---|---|---|
+| 1 | Foundations | Machine-readable definitions of roles and run records, the smallest workable escalation path, rendering of configuration, one adapter and one host. | Two reviewers independent of the authors sign off, and one of those reviews looks at security; launch tests exercise a run whose authority is withdrawn partway through, a request sent twice, hostile file paths, and a crash that happens before anything is recorded; any attempt to loosen an entrenched field is turned away; and an area override configured in the escalation path is honoured. | **Required** (repeats charter sections 2 and 6: independent review; relaxed sealed fields turned away); **Suggested** (the rest, except the area-override acceptance description, which carries no label) |
+| 2 | First real project | Run records the host authenticates, each carrying the required run ids and usage figures; the operator's own settings layer; and a sample project. | The sample project's own checks are green; edits by workers, replayed records and records stitched together from parts are all turned away; tampered memory makes nothing happen; and every review is tied to the precise candidate it judged. | **Required** (repeats S4 and charter section 7: run ids on every record; tampered memory makes nothing happen); **Suggested** (the rest) |
+| 3 | Routing | The dispatcher, wired in. | Assignments that are harder get a higher grade; destinations nobody approved are refused; and a refusal or a wait stays in force with no route around it. | **Required** (repeats S3 and charter section 8: destinations nobody approved are refused; host refusals and quota holds stay in force); **Suggested** (the rest) |
+| 4 | Watched pilot | Joins across observations, plus a pilot that a person watches throughout. | Seven days of reports exist, broken down by grade and by role, covering cost and human interventions for each accepted outcome, how escalations were closed, and which observations were missing. | **Suggested** |
+| 5 | Self-checking | The compliance checker and the sentinels. | Projects using the model report on independence, run records, sentinels, minimum grades and schemas; and the checker cannot sign off changes to itself. | **Required** (repeats charter section 8: the checker cannot sign off changes to itself); **Suggested** (the rest) |
+| 6 | Running alone | The runtime for unattended work, delivered in two stages, the first before the second. | Stage one: usage collection has been verified and reservations settle correctly. Stage two: a full unattended day on a qualified setup, with an entry check every time the runtime wakes and run limits enforced. | **Suggested** |
+| 7 | Clearing old evidence | The protected records sweep. | When the sweep rehearses a deletion, its list spares both evidence that something cites and adverse records that nothing cites; and the tests take in the markers that stand in for deleted payloads, memory sources that recall notes quote, references that are ambiguous or unreadable, and each reference source and form. | **Required** (repeats charter section 8: adverse records that nothing cites are spared); **Suggested** (the rest) |
 
 ### First slice of step 1
 

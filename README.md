@@ -2,7 +2,9 @@
 
 why-bureau is a method, a charter and a specification for how people and AI agents work together, so that every piece of work can answer five questions: why it was done, how, where, what was done, and by whom.
 
-Version 0.1. Current status: draft specification; no reference implementation yet.
+Version 0.1.1. Current status: draft specification; no reference implementation yet.
+
+Lines labelled **Required** bind this repository. A team adopting the method is held only to safeguards S1 to S5; for that team everything else is advice to try and measure.
 
 ## The problem
 
