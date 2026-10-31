@@ -1,0 +1,243 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "why-bureau run record",
+  "description": "Permanent record of one run. What the host observed and what the worker claimed are kept in separate groups. See RECORDS.md, section 'Run record fields'. Schema version 0.1.",
+  "$comment": "Every group is mandatory. The qualification id is mandatory for a live launch and the render digest whenever a rendered configuration is used. This schema covers shape alone; origin and bindings are verified against protected records.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "scope", "actor", "launch", "artifacts", "observed", "claimed", "review"],
+  "properties": {
+    "schema_version": { "const": "0.1" },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["purpose_item", "assignment", "reserved_acceptance_digest", "run", "parent", "attempt"],
+      "properties": {
+        "purpose_item": { "$ref": "#/$defs/id" },
+        "assignment": { "$ref": "#/$defs/id" },
+        "reserved_acceptance_digest": { "$ref": "#/$defs/digest" },
+        "run": { "$ref": "#/$defs/id" },
+        "parent": { "type": ["string", "null"] },
+        "attempt": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "post",
+        "grade",
+        "execution_session",
+        "escalation_step",
+        "escalation_round",
+        "provider",
+        "model_version",
+        "roster_revision"
+      ],
+      "properties": {
+        "role": { "$ref": "#/$defs/id" },
+        "post": { "$ref": "#/$defs/id" },
+        "grade": { "enum": ["fast", "build-lite", "build", "review", "senior", "top"] },
+        "execution_session": { "$ref": "#/$defs/id" },
+        "escalation_step": { "type": "integer", "minimum": 0 },
+        "escalation_round": { "type": "integer", "minimum": 0 },
+        "provider": { "$ref": "#/$defs/id" },
+        "model_version": { "$ref": "#/$defs/id" },
+        "roster_revision": { "$ref": "#/$defs/id" }
+      }
+    },
+    "launch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mandate_revision",
+        "run_authorisation",
+        "dispatch",
+        "checker_digest",
+        "adapter_digest",
+        "host_digest",
+        "live_launch",
+        "rendered_config"
+      ],
+      "properties": {
+        "mandate_revision": { "$ref": "#/$defs/id" },
+        "run_authorisation": { "$ref": "#/$defs/id" },
+        "dispatch": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mode"],
+          "properties": {
+            "mode": { "enum": ["dispatcher", "local"] },
+            "pick": { "$ref": "#/$defs/id" },
+            "reason": { "type": "string", "minLength": 1 },
+            "evidence": { "$ref": "#/$defs/digest" }
+          },
+          "allOf": [
+            { "if": { "properties": { "mode": { "const": "dispatcher" } } }, "then": { "required": ["pick"] } },
+            { "if": { "properties": { "mode": { "const": "local" } } }, "then": { "required": ["reason", "evidence"] } }
+          ]
+        },
+        "host_digest": { "$ref": "#/$defs/digest" },
+        "adapter_digest": { "$ref": "#/$defs/digest" },
+        "checker_digest": { "$ref": "#/$defs/digest" },
+        "live_launch": { "type": "boolean" },
+        "qualification_id": { "$ref": "#/$defs/id" },
+        "rendered_config": { "type": "boolean" },
+        "render_digest": { "$ref": "#/$defs/digest" }
+      },
+      "allOf": [
+        { "if": { "properties": { "live_launch": { "const": true } } }, "then": { "required": ["qualification_id"] } },
+        { "if": { "properties": { "rendered_config": { "const": true } } }, "then": { "required": ["render_digest"] } }
+      ]
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_digests",
+        "source_revisions",
+        "worker_body_digest",
+        "output_digest",
+        "artifact_manifest_digest",
+        "evidence"
+      ],
+      "properties": {
+        "input_digests": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/digest" } },
+        "source_revisions": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/id" } },
+        "worker_body_digest": { "$ref": "#/$defs/digest" },
+        "output_digest": { "$ref": "#/$defs/digest" },
+        "artifact_manifest_digest": { "$ref": "#/$defs/digest" },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["expires", "availability", "digest"],
+            "properties": {
+              "digest": { "$ref": "#/$defs/digest" },
+              "availability": { "enum": ["available", "unavailable"] },
+              "expires": { "type": "string", "pattern": "^(never|[0-9]{4}-[0-9]{2}-[0-9]{2})$" }
+            }
+          }
+        }
+      }
+    },
+    "observed": {
+      "type": "object",
+      "description": "Recorded by the host itself.",
+      "additionalProperties": false,
+      "required": [
+        "started_at",
+        "ended_at",
+        "terminal_state",
+        "checks",
+        "tokens",
+        "usage",
+        "cost",
+        "latency_ms",
+        "tool_calls",
+        "authentication"
+      ],
+      "properties": {
+        "started_at": { "$ref": "#/$defs/timestamp" },
+        "ended_at": { "$ref": "#/$defs/timestamp" },
+        "terminal_state": {
+          "enum": ["unknown", "wait", "refusal", "timeout", "cancellation", "engineering_failure", "completed"]
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "exit_code"],
+            "properties": {
+              "name": { "type": "string", "minLength": 1 },
+              "exit_code": { "type": "integer" }
+            }
+          }
+        },
+        "tokens": { "type": "integer", "minimum": 0 },
+        "usage": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["metric", "value", "provenance"],
+            "properties": {
+              "metric": { "type": "string", "minLength": 1 },
+              "value": { "type": "number" },
+              "provenance": { "enum": ["observed", "estimated"] }
+            }
+          }
+        },
+        "cost": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["amount", "currency"],
+          "properties": {
+            "amount": { "type": "number", "minimum": 0 },
+            "currency": { "type": "string", "pattern": "^[A-Z]{3}$" }
+          }
+        },
+        "latency_ms": { "type": "integer", "minimum": 0 },
+        "tool_calls": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["tool", "status"],
+            "properties": {
+              "tool": { "type": "string", "minLength": 1 },
+              "status": { "enum": ["ok", "error", "blocked"] }
+            }
+          }
+        },
+        "authentication": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["method", "signature", "binds"],
+          "properties": {
+            "method": { "type": "string", "minLength": 1 },
+            "signature": { "type": "string", "minLength": 1 },
+            "binds": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/digest" } }
+          }
+        }
+      }
+    },
+    "claimed": {
+      "type": "object",
+      "description": "Everything here is a claim until the host checks or observes it.",
+      "additionalProperties": false,
+      "required": ["outcome", "usage", "changed_files", "tool_calls", "checks", "commands"],
+      "properties": {
+        "outcome": { "type": "string", "minLength": 1 },
+        "usage": { "type": "object" },
+        "changed_files": { "type": "array", "items": { "type": "string" } },
+        "tool_calls": { "type": "array", "items": { "type": "string" } },
+        "checks": { "type": "array", "items": { "type": "string" } },
+        "commands": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["verdict_ref", "candidate_digest", "acceptance_digest", "reviewer_session", "reviewer_vendor_family"],
+      "properties": {
+        "verdict_ref": { "$ref": "#/$defs/id" },
+        "candidate_digest": { "$ref": "#/$defs/digest" },
+        "acceptance_digest": { "$ref": "#/$defs/digest" },
+        "reviewer_session": { "$ref": "#/$defs/id" },
+        "reviewer_vendor_family": { "$ref": "#/$defs/id" }
+      }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "minLength": 1 },
+    "digest": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "timestamp": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})$"
+    }
+  }
+}

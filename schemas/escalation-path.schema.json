@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "why-bureau escalation path",
+  "description": "Ordered steps a failing assignment climbs. See MODEL.md, section 'The escalation path'. Schema version 0.1.",
+  "$comment": "Required, so enforced: a per-round budget; when vendor preference is present, its destination limit (repeats S3). Suggested, so optional here: steps, rounds, area overrides, vendor preference, the person as last step, and the suggested sequence and round counts. Fields that are present must still have the shape below.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "budget_per_round"],
+  "properties": {
+    "schema_version": { "const": "0.1" },
+    "steps": { "$ref": "#/$defs/steps" },
+    "budget_per_round": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["amount", "unit"],
+      "properties": {
+        "amount": { "type": "number", "exclusiveMinimum": 0 },
+        "unit": { "enum": ["usd", "tokens"] }
+      }
+    },
+    "areas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["match", "steps"],
+        "properties": {
+          "match": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "value"],
+            "properties": {
+              "kind": { "enum": ["label", "path"] },
+              "value": { "type": "string", "minLength": 1 }
+            }
+          },
+          "steps": { "$ref": "#/$defs/steps" }
+        }
+      }
+    },
+    "vendor_preference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["approved_destinations_only"],
+      "properties": {
+        "switch_vendor_after_failure": { "type": "boolean" },
+        "approved_destinations_only": { "const": true }
+      }
+    }
+  },
+  "$defs": {
+    "grade": { "enum": ["fast", "build-lite", "build", "review", "senior", "top"] },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/step" }
+    },
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind"],
+      "properties": {
+        "kind": { "enum": ["grade", "person"] },
+        "grade": { "$ref": "#/$defs/grade" },
+        "person": { "type": "string", "minLength": 1 },
+        "rounds": { "type": "integer", "minimum": 0 }
+      },
+      "allOf": [
+        { "if": { "properties": { "kind": { "const": "grade" } } }, "then": { "required": ["grade"] } },
+        { "if": { "properties": { "kind": { "const": "person" } } }, "then": { "required": ["person"] } }
+      ]
+    }
+  }
+}

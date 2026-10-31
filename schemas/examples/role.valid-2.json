@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1",
+  "name": "security-reviewer",
+  "purpose": "Review changes that touch the security surface.",
+  "permission_class": "dev-test-change",
+  "write_scope": {
+    "paths": [
+      "reviews/"
+    ],
+    "record_kinds": [
+      "evidence"
+    ]
+  },
+  "tools": [
+    "git"
+  ],
+  "isolation_grade": "G1",
+  "minimum_grade": "top",
+  "top_grade_set_by": "project owner",
+  "independence": {
+    "non_author_review": true
+  },
+  "escalation_path": {
+    "schema_version": "0.1",
+    "steps": [
+      {
+        "kind": "person",
+        "person": "maintainer on duty",
+        "rounds": 1
+      }
+    ],
+    "budget_per_round": {
+      "amount": 200000,
+      "unit": "tokens"
+    }
+  },
+  "sentinels": "sentinels/security-reviewer"
+}

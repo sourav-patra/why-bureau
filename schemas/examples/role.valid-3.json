@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1",
+  "name": "builder",
+  "purpose": "Implement one bounded assignment in the linecount source tree.",
+  "permission_class": "approved-item-fix",
+  "write_scope": {
+    "paths": [
+      "src/linecount/",
+      "tests/dev/"
+    ]
+  },
+  "tools": [
+    "shell",
+    "git",
+    "pytest"
+  ],
+  "isolation_grade": "G2",
+  "independence": {
+    "non_author_review": true,
+    "independent_of_prior_attempts": true,
+    "different_vendor_review": false
+  },
+  "sentinels": "sentinels/builder/"
+}

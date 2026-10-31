@@ -1,0 +1,128 @@
+{
+  "schema_version": "0.1",
+  "scope": {
+    "purpose_item": "REQ-01",
+    "assignment": "asg-0007",
+    "reserved_acceptance_digest": "sha256:2a1359ead2a930bd1fd1c75d321f36a62a758db16c7b890d4bff1be3bfaa213a",
+    "run": "run-0040",
+    "parent": null,
+    "attempt": 1
+  },
+  "actor": {
+    "role": "builder",
+    "post": "linecount-builder",
+    "grade": "build",
+    "execution_session": "sess-0040-a",
+    "escalation_step": 0,
+    "escalation_round": 0,
+    "provider": "provider-a",
+    "model_version": "model-a-0001",
+    "roster_revision": "roster-2026-10-30"
+  },
+  "launch": {
+    "mandate_revision": "mandate-3",
+    "run_authorisation": "auth-0019",
+    "dispatch": {
+      "mode": "dispatcher",
+      "pick": "pick-0040"
+    },
+    "host_digest": "sha256:7c3e6cb58873f71954ca45492da6cd40eee3843b250a3065ff0c84aec2e587d5",
+    "adapter_digest": "sha256:a336eb6b3fc9fdb3e2fc24d2c1c52f5ef94565bcda719cd162945ed763c7bf06",
+    "checker_digest": "sha256:24ce404c61bf193c00c1ade771c215d087dbdf74f7daa47b0bb02d883be5f5e1",
+    "live_launch": true,
+    "rendered_config": false
+  },
+  "artifacts": {
+    "input_digests": [
+      "sha256:2b13e740d418da902b74c2181718a90c3d871cc49cbb518692533a947d9c2089",
+      "sha256:2a1359ead2a930bd1fd1c75d321f36a62a758db16c7b890d4bff1be3bfaa213a"
+    ],
+    "source_revisions": [
+      "base-commit-a1"
+    ],
+    "worker_body_digest": "sha256:f79719e57d78cc4dc75ce7cc636fc98d30f9193d9b7cdc77db33daa98b50b4fd",
+    "output_digest": "sha256:8b1e3f2021e1b75951629ddec6a5ed11b5ed17154cbba1e819a4ae46707dae12",
+    "artifact_manifest_digest": "sha256:05b3abf2579a5eb66403cd78be557fd860633a1fe2103c7642030defe32c657f",
+    "evidence": [
+      {
+        "digest": "sha256:dcf7e90720fbdbc287608cdad045364dc54576dab0f105c2cc761b68894f35c1",
+        "availability": "available",
+        "expires": "never"
+      }
+    ]
+  },
+  "observed": {
+    "started_at": "2026-10-30T08:30:00Z",
+    "ended_at": "2026-10-30T08:52:30Z",
+    "terminal_state": "engineering_failure",
+    "checks": [
+      {
+        "name": "pytest tests/acceptance",
+        "exit_code": 1
+      }
+    ],
+    "tokens": 48211,
+    "usage": [
+      {
+        "metric": "tokens",
+        "value": 48211,
+        "provenance": "observed"
+      },
+      {
+        "metric": "cost_usd",
+        "value": 0.61,
+        "provenance": "estimated"
+      }
+    ],
+    "cost": {
+      "amount": 0.61,
+      "currency": "USD"
+    },
+    "latency_ms": 850010,
+    "tool_calls": [
+      {
+        "tool": "shell",
+        "status": "ok"
+      },
+      {
+        "tool": "git",
+        "status": "ok"
+      }
+    ],
+    "authentication": {
+      "method": "host signing key",
+      "signature": "base64:placeholder",
+      "binds": [
+        "sha256:9c5c38d7fe1b7fc7c4265d6493d70e58a8d05d505179f0e119e30b0e690d96f6",
+        "sha256:f79719e57d78cc4dc75ce7cc636fc98d30f9193d9b7cdc77db33daa98b50b4fd"
+      ]
+    }
+  },
+  "claimed": {
+    "commands": [
+      "pytest -q"
+    ],
+    "checks": [
+      "all tests pass"
+    ],
+    "tool_calls": [
+      "shell",
+      "git"
+    ],
+    "changed_files": [
+      "src/linecount/cli.py",
+      "tests/dev/test_exclude.py"
+    ],
+    "usage": {
+      "tokens": 47000
+    },
+    "outcome": "done"
+  },
+  "review": {
+    "reviewer_session": "sess-0041-r",
+    "reviewer_vendor_family": "family-b",
+    "candidate_digest": "sha256:9c5c38d7fe1b7fc7c4265d6493d70e58a8d05d505179f0e119e30b0e690d96f6",
+    "acceptance_digest": "sha256:2a1359ead2a930bd1fd1c75d321f36a62a758db16c7b890d4bff1be3bfaa213a",
+    "verdict_ref": "verdict-0041"
+  }
+}

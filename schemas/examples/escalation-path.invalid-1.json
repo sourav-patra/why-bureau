@@ -1,0 +1,10 @@
+{
+  "schema_version": "0.1",
+  "steps": [
+    {
+      "kind": "person",
+      "person": "maintainer on duty",
+      "rounds": 1
+    }
+  ]
+}

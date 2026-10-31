@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1",
+  "name": "builder",
+  "purpose": "Implement one bounded assignment in the linecount source tree.",
+  "permission_class": "approved-item-fix",
+  "write_scope": {
+    "paths": [
+      "src/linecount/",
+      "tests/dev/"
+    ],
+    "record_kinds": [
+      "code"
+    ]
+  },
+  "tools": [
+    "shell",
+    "git",
+    "pytest"
+  ],
+  "isolation_grade": "G2",
+  "minimum_grade": "build",
+  "independence": {
+    "non_author_review": true,
+    "independent_of_prior_attempts": true,
+    "different_vendor_review": false
+  },
+  "escalation_path": {
+    "schema_version": "0.1",
+    "steps": [
+      {
+        "kind": "grade",
+        "grade": "build",
+        "rounds": 1
+      },
+      {
+        "kind": "grade",
+        "grade": "senior",
+        "rounds": 1
+      },
+      {
+        "kind": "grade",
+        "grade": "top",
+        "rounds": 3
+      },
+      {
+        "kind": "person",
+        "person": "project owner",
+        "rounds": 1
+      }
+    ],
+    "budget_per_round": {
+      "amount": 3,
+      "unit": "usd"
+    },
+    "areas": [
+      {
+        "match": {
+          "kind": "path",
+          "value": "src/linecount/security/"
+        },
+        "steps": [
+          {
+            "kind": "grade",
+            "grade": "senior",
+            "rounds": 1
+          },
+          {
+            "kind": "person",
+            "person": "project owner",
+            "rounds": 1
+          }
+        ]
+      }
+    ],
+    "vendor_preference": {
+      "switch_vendor_after_failure": true,
+      "approved_destinations_only": true
+    }
+  },
+  "sentinels": "sentinels/builder/"
+}

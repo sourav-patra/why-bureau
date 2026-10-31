@@ -1,0 +1,8 @@
+# Required: every adopted file, its SHA-256 sidecar and any adoption index, and
+# every file under docs/texts/, are stored byte-exact, with no line-ending
+# conversion, so their hashes match the decision records that adopt them.
+METHOD.md -text
+METHOD.md.sha256 -text
+CHARTER.md -text
+CHARTER.md.sha256 -text
+docs/texts/** -text

@@ -1,0 +1,8 @@
+{
+  "schema_version": "0.1",
+  "steps": [],
+  "budget_per_round": {
+    "amount": 200000,
+    "unit": "tokens"
+  }
+}
