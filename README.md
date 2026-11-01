@@ -2,7 +2,7 @@
 
 why-bureau is a method, a charter and a specification for how people and AI agents work together, so that every piece of work can answer five questions: why it was done, how, where, what was done, and by whom.
 
-Version 0.1.1. Current status: draft specification; no reference implementation yet.
+Version 0.1.2. Current status: draft specification; no reference implementation yet.
 
 Lines labelled **Required** bind this repository. A team adopting the method is held only to safeguards S1 to S5; for that team everything else is advice to try and measure.
 
@@ -49,6 +49,7 @@ Adopting these texts does not enforce any of their controls, Required or Suggest
 ## Status
 
 - The repository holds design documents, JSON Schemas with a check script, decision records and one example. Adapters, a host and reference code are planned and do not exist yet.
+- A separate project, [tiller-book](https://github.com/sourav-patra/tiller-book) (0.1.0-alpha), provides local checks that a plan was signed and, for build changes, that a change stayed inside its allowed paths and left a record naming its commit. Changes with no files and plan-only changes skip the path and record checks, and the checks count only when someone runs them. Reviewer identity, required checks on main and lesson filing are not enforced yet. This repository does not depend on it.
 - Not verified: whether any source was signed, adoption in live use, qualification of any runtime, and any present claim about external products.
 
 ## Checking the schemas
