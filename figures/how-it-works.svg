@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 560" width="880" height="560" role="img" aria-labelledby="fig2-title fig2-desc" font-family="system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+  <title id="fig2-title">Authority stays with the role, not the model</title>
+  <desc id="fig2-desc">Draft design with fictional example identifiers and exit codes. Five separate things on the left: the post that answers for the result, the role doing the work, the purpose of that work, the capability grade the role needs, and the private model roster that fills the grade. A marked group holds the role and the run authorisation, which is where authority comes from. A dashed line below the grade marks where a model change leaves it as it was. On the right, three parallel bars hold the three acceptance legs: the host-written run record, the reserved acceptance, and an independent reviewer. All three must hold.</desc>
+
+  <rect x="0.75" y="0.75" width="878.5" height="558.5" rx="16" fill="#ffffff" stroke="#d8d8d2" stroke-width="1.5"/>
+
+  <text x="40" y="34" font-size="20" font-weight="600" fill="#1b1f1d">Authority stays with the role, not the model</text>
+  <text x="840" y="34" font-size="14" fill="#6b726c" text-anchor="end">Draft design and fictional example</text>
+  <text x="40" y="58" font-size="14" fill="#3d453f">Swapping the model should not change what the agent is allowed to do.</text>
+
+  <rect x="40" y="80" width="516" height="60" rx="10" fill="#f7f7f4" stroke="#b9bdb6" stroke-width="1.5"/>
+  <text x="58" y="104" font-size="15" font-weight="600" fill="#1b1f1d">post</text>
+  <text x="58" y="124" font-size="14" fill="#3d453f">the lasting post that answers for the result</text>
+
+  <rect x="28" y="164" width="540" height="100" rx="12" fill="none" stroke="#a9b0a8" stroke-width="1.5"/>
+  <rect x="40" y="152" width="100" height="24" rx="12" fill="#ffffff" stroke="#a9b0a8" stroke-width="1.5"/>
+  <text x="90" y="169" font-size="14" font-weight="600" fill="#3d453f" text-anchor="middle">authority</text>
+
+  <rect x="40" y="180" width="240" height="68" rx="10" fill="#f7f7f4" stroke="#b9bdb6" stroke-width="1.5"/>
+  <text x="58" y="204" font-size="15" font-weight="600" fill="#1b1f1d">role</text>
+  <text x="58" y="224" font-size="14" fill="#3d453f">does the work</text>
+
+  <rect x="300" y="180" width="256" height="68" rx="10" fill="#f7f7f4" stroke="#b9bdb6" stroke-width="1.5"/>
+  <text x="318" y="204" font-size="15" font-weight="600" fill="#1b1f1d">run authorisation</text>
+  <text x="318" y="224" font-size="14" fill="#3d453f">write scope, budget, expiry</text>
+
+  <rect x="40" y="282" width="240" height="68" rx="10" fill="#f7f7f4" stroke="#b9bdb6" stroke-width="1.5"/>
+  <text x="58" y="306" font-size="15" font-weight="600" fill="#1b1f1d">purpose</text>
+  <text x="58" y="326" font-size="14" fill="#3d453f">why the work is done</text>
+
+  <rect x="300" y="282" width="256" height="68" rx="10" fill="#f7f7f4" stroke="#b9bdb6" stroke-width="1.5"/>
+  <text x="318" y="306" font-size="15" font-weight="600" fill="#1b1f1d">capability grade</text>
+  <text x="318" y="326" font-size="14" fill="#3d453f">what the role needs</text>
+
+  <text x="40" y="368" font-size="14" fill="#3d453f">a model change leaves everything above this line as it was</text>
+  <line x1="40" y1="376" x2="556" y2="376" stroke="#b9bdb6" stroke-width="1.5" stroke-dasharray="6 5"/>
+
+  <rect x="40" y="396" width="516" height="68" rx="10" fill="#f7f7f4" stroke="#b9bdb6" stroke-width="1.5"/>
+  <text x="58" y="420" font-size="15" font-weight="600" fill="#1b1f1d">model roster</text>
+  <text x="58" y="440" font-size="14" fill="#3d453f">private; fills the capability grade</text>
+
+  <rect x="40" y="484" width="800" height="44" rx="10" fill="#eef0ea"/>
+  <text x="60" y="511" font-size="14" fill="#1b1f1d">Authority stays with the role and the run authorisation, never with the model.</text>
+
+  <rect x="572" y="92" width="268" height="380" rx="12" fill="#f7f7f4" stroke="#d8d8d2" stroke-width="1.5"/>
+  <text x="602" y="124" font-size="14" font-weight="600" fill="#1b1f1d">three acceptance legs</text>
+
+  <rect x="584" y="140" width="244" height="84" rx="10" fill="#ffffff" stroke="#b9bdb6" stroke-width="1.5"/>
+  <text x="602" y="166" font-size="15" font-weight="600" fill="#1b1f1d">host-written run record</text>
+  <text x="602" y="186" font-size="14" fill="#3d453f">the host writes what ran</text>
+  <text x="602" y="206" font-size="14" fill="#6b726c">run-0040, run-0042</text>
+
+  <rect x="584" y="234" width="244" height="84" rx="10" fill="#ffffff" stroke="#b9bdb6" stroke-width="1.5"/>
+  <text x="602" y="260" font-size="15" font-weight="600" fill="#1b1f1d">reserved acceptance</text>
+  <text x="602" y="280" font-size="14" fill="#3d453f">checks the author cannot edit</text>
+  <text x="602" y="300" font-size="14" fill="#6b726c">exit 1, then exit 0</text>
+
+  <rect x="584" y="328" width="244" height="84" rx="10" fill="#ffffff" stroke="#b9bdb6" stroke-width="1.5"/>
+  <text x="602" y="354" font-size="15" font-weight="600" fill="#1b1f1d">independent reviewer</text>
+  <text x="602" y="374" font-size="14" fill="#3d453f">not the author</text>
+  <text x="602" y="394" font-size="14" fill="#6b726c">verdict-0043</text>
+
+  <text x="602" y="440" font-size="14" fill="#3d453f">all three must hold</text>
+</svg>
