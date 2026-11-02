@@ -6,7 +6,6 @@ A method, charter and specification for people and AI agents to explain each pie
 
 Version 0.1.3. Draft specification; no reference implementation yet.
 
-![Fictional example: purpose REQ-01 is locked, attempt 1 fails acceptance, escalation changes the diagnosis, attempt 2 passes, an independent reviewer gives verdict-0043, and the owner approves the merge.](figures/working.svg)
 
 *[Fictional example](examples/linecount/README.md): run-0040 fails acceptance; run-0042 passes with verdict-0043. The failed attempt remains recorded.*
 
